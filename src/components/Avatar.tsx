@@ -18,10 +18,10 @@ const getInitials = (name: string): string => {
 };
 
 const sizeClasses = {
-  sm: 'w-10 h-10 text-sm',
+  sm: 'w-[43px] h-[43px] text-[14px]',
   md: 'w-16 h-16 text-xl',
-  lg: 'w-24 h-24 text-3xl',
-  xl: 'w-32 h-32 text-4xl lg:w-40 lg:h-40 lg:text-5xl',
+  lg: 'w-[80px] h-[80px] text-[28px] md:w-[90px] md:h-[90px] md:text-[32px]',
+  xl: 'w-[120px] h-[120px] text-[42px] lg:w-[161px] lg:h-[161px] lg:text-[56px]',
 };
 
 export default function Avatar({ name, size = 'md', colorIndex = 0 }: AvatarProps) {
