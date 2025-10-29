@@ -22,7 +22,7 @@ import imgHelpingHand from "figma:asset/b5f3ab831f3e2a78b8073d78ff761c491f57dd78
 import img66194F98407B8Istockphoto1485705128170667A3 from "figma:asset/ba13d4883035a4786187879b02156d64fb30faf2.png";
 import imgEllipse229 from "figma:asset/14cb7f2d11ca7d2ada14dbcc4f177b7aea981cb8.png";
 import imgDownArrow from "figma:asset/8bf80033e33324855df5bc6382f04929e0d3fd7a.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   Zap,
@@ -36,15 +36,17 @@ import Services from "./Services";
 import About from "./About";
 import FAQ from "./FAQ";
 import Contact from "./Contact";
-import Blog from "./Blog";
-import BlogDetail from "./BlogDetail";
-import Disclaimer from "./Disclaimer";
-import PrivacyPolicy from "./PrivacyPolicy";
-import TermsOfUse from "./TermsOfUse";
 import ChatWidget from "./components/ChatWidget";
 import ScrollFadeIn from "./components/ScrollFadeIn";
 import { homePageTestimonials } from "./data/testimonials";
 import { homepageFAQs } from "./data/faqs";
+
+// Lazy load Blog components to reduce initial bundle size
+const Blog = lazy(() => import("./Blog"));
+const BlogDetail = lazy(() => import("./BlogDetail"));
+const Disclaimer = lazy(() => import("./Disclaimer"));
+const PrivacyPolicy = lazy(() => import("./PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("./TermsOfUse"));
 
 export default function App() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(1);
@@ -177,27 +179,47 @@ export default function App() {
 
   // If we're viewing a specific blog post (check this BEFORE the blog list page)
   if (selectedBlogId !== null) {
-    return <BlogDetail setCurrentPage={setCurrentPage} blogId={selectedBlogId} onBackToBlog={() => setSelectedBlogId(null)} onBlogClick={setSelectedBlogId} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <BlogDetail setCurrentPage={setCurrentPage} blogId={selectedBlogId} onBackToBlog={() => setSelectedBlogId(null)} onBlogClick={setSelectedBlogId} />
+      </Suspense>
+    );
   }
 
   // If we're on the blog page, render that instead
   if (currentPage === "blog") {
-    return <Blog setCurrentPage={setCurrentPage} onBlogClick={navigateToBlogPost} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <Blog setCurrentPage={setCurrentPage} onBlogClick={navigateToBlogPost} />
+      </Suspense>
+    );
   }
 
   // If we're on the disclaimer page, render that instead
   if (currentPage === "disclaimer") {
-    return <Disclaimer setCurrentPage={setCurrentPage} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <Disclaimer setCurrentPage={setCurrentPage} />
+      </Suspense>
+    );
   }
 
   // If we're on the privacy policy page, render that instead
   if (currentPage === "privacy") {
-    return <PrivacyPolicy setCurrentPage={setCurrentPage} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <PrivacyPolicy setCurrentPage={setCurrentPage} />
+      </Suspense>
+    );
   }
 
   // If we're on the terms of use page, render that instead
   if (currentPage === "terms") {
-    return <TermsOfUse setCurrentPage={setCurrentPage} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <TermsOfUse setCurrentPage={setCurrentPage} />
+      </Suspense>
+    );
   }
 
   return (

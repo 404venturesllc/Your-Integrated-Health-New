@@ -10,6 +10,8 @@ export default function HeroSection() {
           src={img65A43F7E821F8Untitleddesign21}
           alt=""
           className="w-full h-full object-cover opacity-40"
+          fetchpriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent" />
       </div>
