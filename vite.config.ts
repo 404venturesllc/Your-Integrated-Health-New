@@ -2,9 +2,26 @@
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react-swc';
   import path from 'path';
+  import viteCompression from 'vite-plugin-compression';
 
   export default defineConfig({
-    plugins: [react()],
+    plugins: [
+      react(),
+      viteCompression({
+        verbose: true,
+        disable: false,
+        threshold: 10240, // Only compress files bigger than 10KB
+        algorithm: 'gzip',
+        ext: '.gz',
+      }),
+      viteCompression({
+        verbose: true,
+        disable: false,
+        threshold: 10240,
+        algorithm: 'brotliCompress',
+        ext: '.br',
+      }),
+    ],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
@@ -70,15 +87,33 @@
     build: {
       target: 'esnext',
       outDir: 'build',
+      cssCodeSplit: true,
+      sourcemap: false, // Disable sourcemaps for faster builds
+      minify: 'terser', // Better minification than esbuild
+      terserOptions: {
+        compress: {
+          drop_console: true, // Remove console.logs in production
+          drop_debugger: true,
+        },
+      },
       rollupOptions: {
         output: {
           manualChunks: {
-            'react-vendor': ['react', 'react-dom', 'react-helmet-async'],
+            'react-vendor': ['react', 'react-dom', 'react-helmet-async', 'react-router-dom'],
             'ui-vendor': ['lucide-react'],
-          }
-        }
+            'radix-vendor': [
+              '@radix-ui/react-dialog',
+              '@radix-ui/react-accordion',
+              '@radix-ui/react-select',
+              '@radix-ui/react-tabs',
+            ],
+          },
+          chunkFileNames: 'assets/[name]-[hash].js',
+          entryFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash][extname]',
+        },
       },
-      chunkSizeWarningLimit: 500,
+      chunkSizeWarningLimit: 600,
     },
     server: {
       port: 3000,
