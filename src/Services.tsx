@@ -399,7 +399,10 @@ export default function Services({ setCurrentPage }: ServicesProps) {
                 ))}
               </div>
 
-              <button className="w-full bg-white border border-[#4caf50] text-[#4caf50] py-3 rounded-[6px] font-['Poppins'] font-medium text-[14px] hover:bg-[#4caf50] hover:text-white transition-colors flex items-center justify-center">
+              <button
+                onClick={() => setCurrentPage("contact")}
+                className="w-full bg-white border border-[#4caf50] text-[#4caf50] py-3 rounded-[6px] font-['Poppins'] font-medium text-[14px] hover:bg-[#4caf50] hover:text-white transition-colors flex items-center justify-center"
+              >
                 Book Consultation
               </button>
               </article>
@@ -444,7 +447,10 @@ export default function Services({ setCurrentPage }: ServicesProps) {
                 ))}
               </div>
 
-              <button className="w-full bg-[#4caf50] text-white py-3 rounded-[6px] font-['Poppins'] font-medium text-[14px] hover:bg-[#449944] transition-colors flex items-center justify-center">
+              <button
+                onClick={() => setCurrentPage("contact")}
+                className="w-full bg-[#4caf50] text-white py-3 rounded-[6px] font-['Poppins'] font-medium text-[14px] hover:bg-[#449944] transition-colors flex items-center justify-center"
+              >
                 Book Consultation
               </button>
               </article>
@@ -489,7 +495,10 @@ export default function Services({ setCurrentPage }: ServicesProps) {
                 ))}
               </div>
 
-              <button className="w-full bg-white border border-[#4caf50] text-[#4caf50] py-3 rounded-[6px] font-['Poppins'] font-medium text-[14px] hover:bg-[#4caf50] hover:text-white transition-colors flex items-center justify-center">
+              <button
+                onClick={() => setCurrentPage("contact")}
+                className="w-full bg-white border border-[#4caf50] text-[#4caf50] py-3 rounded-[6px] font-['Poppins'] font-medium text-[14px] hover:bg-[#4caf50] hover:text-white transition-colors flex items-center justify-center"
+              >
                 Book Consultation
               </button>
               </article>
