@@ -32,16 +32,16 @@ import {
   Dumbbell,
   FlaskConical,
 } from "lucide-react";
-import Services from "./Services";
-import About from "./About";
-import FAQ from "./FAQ";
-import Contact from "./Contact";
 import ChatWidget from "./components/ChatWidget";
 import ScrollFadeIn from "./components/ScrollFadeIn";
 import { homePageTestimonials } from "./data/testimonials";
 import { homepageFAQs } from "./data/faqs";
 
-// Lazy load Blog components to reduce initial bundle size
+// Lazy load all page components to minimize initial bundle
+const Services = lazy(() => import("./Services"));
+const About = lazy(() => import("./About"));
+const FAQ = lazy(() => import("./FAQ"));
+const Contact = lazy(() => import("./Contact"));
 const Blog = lazy(() => import("./Blog"));
 const BlogDetail = lazy(() => import("./BlogDetail"));
 const Disclaimer = lazy(() => import("./Disclaimer"));
@@ -159,22 +159,38 @@ export default function App() {
 
   // If we're on the services page, render that instead
   if (currentPage === "services") {
-    return <Services setCurrentPage={setCurrentPage} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <Services setCurrentPage={setCurrentPage} />
+      </Suspense>
+    );
   }
 
   // If we're on the about page, render that instead
   if (currentPage === "about") {
-    return <About setCurrentPage={setCurrentPage} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <About setCurrentPage={setCurrentPage} />
+      </Suspense>
+    );
   }
 
   // If we're on the FAQ page, render that instead
   if (currentPage === "faq") {
-    return <FAQ setCurrentPage={setCurrentPage} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <FAQ setCurrentPage={setCurrentPage} />
+      </Suspense>
+    );
   }
 
   // If we're on the contact page, render that instead
   if (currentPage === "contact") {
-    return <Contact setCurrentPage={setCurrentPage} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <Contact setCurrentPage={setCurrentPage} />
+      </Suspense>
+    );
   }
 
   // If we're viewing a specific blog post (check this BEFORE the blog list page)

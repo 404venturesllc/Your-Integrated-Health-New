@@ -31,6 +31,18 @@
           line-gap-override: 10%;
           size-adjust: 95%;
         }
+
+        /* Critical CSS for initial render */
+        body {
+          margin: 0;
+          font-family: 'Poppins', 'Poppins Fallback', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        #root {
+          min-height: 100vh;
+        }
       </style>
 
       <title>Your Integrative Health | Functional Medicine Clinic</title>
