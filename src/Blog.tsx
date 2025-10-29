@@ -1315,12 +1315,9 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16 relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="bg-gradient-to-br from-[#f6faf5] to-[#f3f8fc] rounded-[20px] p-8 md:p-12 text-center shadow-[0px_4px_20px_0px_rgba(0,0,0,0.08)] scroll-animation">
-              <h2 className="font-['Poppins'] font-bold text-[28px] md:text-[32px] lg:text-[36px] text-[#236189] mb-4">
+              <h2 className="font-['Poppins'] font-bold text-[28px] md:text-[32px] lg:text-[36px] text-[#236189] mb-8">
                 Stay Informed
               </h2>
-              <p className="font-['Poppins'] text-[17px] md:text-[18px] text-[#565d6d] mb-8 max-w-xl mx-auto">
-                Get the latest articles on hormone health, weight loss, and wellness delivered straight to your inbox.
-              </p>
               <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                 <input
                   type="email"

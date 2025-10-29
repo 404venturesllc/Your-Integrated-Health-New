@@ -2920,19 +2920,6 @@ export default function App() {
                   Book Your Free Consultation
                 </a>
               </div>
-
-              <div className="font-['Poppins'] text-[22px] md:text-[26px] lg:text-[29px] text-white space-y-4">
-                <p className="font-medium">
-                  Feel Like You Again
-                </p>
-                <p className="font-extralight">
-                  Free from{" "}
-                  <span className="font-normal">anxiety</span>.
-                  Full of{" "}
-                  <span className="font-normal">energy</span>.
-                  Confident. Sexy. Balanced.
-                </p>
-              </div>
             </div>
           </div>
         </section>

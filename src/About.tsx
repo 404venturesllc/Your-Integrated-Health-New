@@ -698,13 +698,10 @@ export default function About({ setCurrentPage }: AboutProps) {
       <section className="py-16 md:py-20 lg:py-32 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-['Poppins'] font-bold text-[32px] md:text-[40px] lg:text-[48px] text-[#236189] mb-6">
+            <h2 className="font-['Poppins'] font-bold text-[32px] md:text-[40px] lg:text-[48px] text-[#236189] mb-12">
               Let's Work Together
             </h2>
-            <p className="font-['Poppins'] text-[18px] md:text-[20px] text-[#565d6d] leading-[32px] mb-12">
-              Whether you're struggling with weight resistance, hormone imbalances, fatigue, or just feeling "off," I'm here to help you find answers and reclaim your vitality.
-            </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-8 md:px-12 py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
                 Book Your Free Consultation

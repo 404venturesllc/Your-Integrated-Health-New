@@ -288,16 +288,6 @@ export default function Services({ setCurrentPage }: ServicesProps) {
               <p className="font-['Poppins'] text-[18px] md:text-[20px] lg:text-[24px] text-white leading-relaxed">
                 Personalized care to restore balance, boost energy, and help you feel your best from the inside out.
               </p>
-              <p className="font-['Poppins'] text-[16px] md:text-[18px] text-white/90 mt-4">
-                Learn more about{" "}
-                <button
-                  onClick={() => setCurrentPage("about")}
-                  className="text-white font-semibold underline hover:text-white/80 transition-colors"
-                >
-                  Megan Hormazdi, NP
-                </button>
-                , our functional medicine specialist who developed the Metabolic Hormone Balance Program.
-              </p>
             </div>
           </ScrollFadeIn>
         </div>
@@ -772,9 +762,6 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           {/* Bottom CTA */}
           <ScrollFadeIn direction="up" duration={0.8} delay={0.2}>
             <div className="text-center mt-12 md:mt-16">
-              <p className="font-['Poppins'] text-[16px] md:text-[18px] text-[#4b5563] mb-6">
-                Join hundreds of women who've transformed their health
-              </p>
               <button className="bg-[#61a94e] text-white px-8 md:px-10 py-3.5 md:py-4 rounded-[12px] font-['Poppins'] font-medium text-[17px] md:text-[18px] hover:bg-[#549440] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center mx-auto gap-2">
                 Read More Success Stories
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -811,19 +798,6 @@ export default function Services({ setCurrentPage }: ServicesProps) {
               <h2 className="font-['Poppins'] font-bold text-[36px] md:text-[48px] lg:text-[59.725px] leading-[1.2] text-white mb-6">
                 Ready to start your journey toward vibrant health?
               </h2>
-              <p className="font-['Poppins'] text-[18px] md:text-[20px] lg:text-[22.397px] text-white/90 leading-[1.5] mb-4 max-w-2xl mx-auto">
-                Schedule your free consultation today and take the first step toward balance and energy.
-              </p>
-              <p className="font-['Poppins'] text-[16px] md:text-[18px] text-white/80 mb-8 max-w-2xl mx-auto">
-                Explore our{" "}
-                <button
-                  onClick={() => setCurrentPage("blog")}
-                  className="text-white font-semibold underline hover:text-white/90 transition-colors"
-                >
-                  hormone balance insights
-                </button>
-                {" "}to understand how this program addresses root causes.
-              </p>
               <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[#61a94e] text-white px-10 md:px-16 py-4 rounded-[7.466px] font-['Poppins'] font-medium text-[17.42px] hover:bg-[#549440] transition-colors inline-block text-center">
                 Book My Free Consultation
               </a>

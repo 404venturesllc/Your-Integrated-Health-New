@@ -504,26 +504,9 @@ export default function FAQ({ setCurrentPage }: FAQProps) {
 
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16 relative z-10">
           <div className="max-w-4xl mx-auto text-center scroll-animation">
-            <h2 className="font-['Poppins'] font-bold text-[32px] md:text-[40px] lg:text-[48px] text-[#236189] mb-6">
+            <h2 className="font-['Poppins'] font-bold text-[32px] md:text-[40px] lg:text-[48px] text-[#236189] mb-12">
               Still Have Questions?
             </h2>
-            <p className="font-['Poppins'] text-[18px] md:text-[20px] text-[#565d6d] mb-4 max-w-2xl mx-auto">
-              We're here to help! Learn more about our{" "}
-              <button
-                onClick={() => setCurrentPage("services")}
-                className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
-              >
-                personalized programs
-              </button>
-              , explore{" "}
-              <button
-                onClick={() => setCurrentPage("blog")}
-                className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
-              >
-                evidence-based wellness tips
-              </button>
-              , or schedule a free consultation with Megan to discuss your specific concerns and learn how our program can support your wellness journey.
-            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-8 md:px-12 py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
