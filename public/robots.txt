@@ -1,11 +1,11 @@
 # Robots.txt for Your Integrative Health
-# Production site: https://www.yourintegrativehealth.com
+# Production site: https://your-integrated-health-new.vercel.app
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.yourintegrativehealth.com/sitemap.xml
+Sitemap: https://your-integrated-health-new.vercel.app/sitemap.xml
 
 # Block common unwanted bots (optional)
 User-agent: AhrefsBot
