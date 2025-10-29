@@ -1,12 +1,10 @@
 import svgPaths from "./imports/svg-p1ne2w6lpt";
 import decorativeSvgPaths from "./imports/svg-0egnuf5q93";
 import img65637454D738DColor3 from "figma:asset/33c4dd26ee1590073477a9c145d04adc1e90a0ad.png";
-import imgRectangle from "figma:asset/0a190a2b9d3e402ba32a1e4c075239fb1a49c61e.png";
-import imgRectangle1 from "figma:asset/885d39ce26a80b9d46612018586366740639636e.png";
-import imgRectangle2 from "figma:asset/78b71585e94f89c8bedddcbdbfb15ad78533cf4e.png";
 import { Stethoscope, CalendarDays, MessageSquare, ShoppingBag, Leaf, Heart } from "lucide-react";
 import CircleCheck from "./imports/CircleCheck";
 import ChatWidget from "./components/ChatWidget";
+import Avatar from "./components/Avatar";
 import { servicesPageTestimonials } from "./data/testimonials";
 import ScrollFadeIn from "./components/ScrollFadeIn";
 import { useState } from "react";
@@ -686,10 +684,6 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           {/* Testimonial Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-[1200px] mx-auto">
             {servicesPageTestimonials.map((testimonial, i) => {
-              // Map images to testimonials by index
-              const images = [imgRectangle, imgRectangle1, imgRectangle2];
-              const image = images[i] || imgRectangle;
-
               return (
               <ScrollFadeIn key={i} direction="up" duration={0.8} delay={0.1 + i * 0.15}>
                 <div
@@ -697,16 +691,20 @@ export default function Services({ setCurrentPage }: ServicesProps) {
                 >
                 {/* Top Accent Bar */}
                 <div className="h-1.5 w-full" style={{ backgroundColor: testimonial.accentColor }} />
-                
+
                 <div className="p-8 md:p-10">
                   {/* Avatar and Name Section */}
                   <div className="flex flex-col items-center mb-6">
                     <div className="relative mb-4">
-                      <div className="w-[80px] h-[80px] md:w-[90px] md:h-[90px] rounded-full overflow-hidden ring-4 ring-white shadow-lg">
-                        <img src={image} alt={testimonial.name} className="w-full h-full object-cover" />
+                      <div className="ring-4 ring-white shadow-lg rounded-full">
+                        <Avatar
+                          name={testimonial.name}
+                          size="lg"
+                          colorIndex={i}
+                        />
                       </div>
                       {/* Small accent circle */}
-                      <div 
+                      <div
                         className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full border-4 border-white flex items-center justify-center"
                         style={{ backgroundColor: testimonial.accentColor }}
                       >

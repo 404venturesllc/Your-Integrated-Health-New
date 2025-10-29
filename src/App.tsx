@@ -13,8 +13,6 @@ import imgStar from "figma:asset/24b4141345e6be30ab7a3e5a1b4e537aaca3e236.png";
 import img65637454D738DColor3 from "figma:asset/33c4dd26ee1590073477a9c145d04adc1e90a0ad.png";
 import imgShutterstock23211944651 from "figma:asset/91204406f01523c66794714f7b4dc1dabb04d514.png";
 import imgFullStop from "figma:asset/65108e3b02768bd9c043e51fdc417c70d895b02c.png";
-import imgEllipse227 from "figma:asset/75fe3c992e0fec8c9556b536b9dd6e9fa5507b9e.png";
-import imgEllipse228 from "figma:asset/5060ad295a0cb34ac35f67fb2d0cdd46ecc2e165.png";
 import imgTreatmentList from "figma:asset/faa3fcfb30b722e5b096c3067900c2fd8881acbf.png";
 import imgCall from "figma:asset/bad57ee87977a7c766923f8e7a3adcd6ddc08e09.png";
 import imgPill from "figma:asset/ac04ba94d9c0c06a642e143dbd178834d292e80d.png";
@@ -34,6 +32,7 @@ import {
 } from "lucide-react";
 import ChatWidget from "./components/ChatWidget";
 import ScrollFadeIn from "./components/ScrollFadeIn";
+import Avatar from "./components/Avatar";
 import { homePageTestimonials } from "./data/testimonials";
 import { homepageFAQs } from "./data/faqs";
 
@@ -628,21 +627,13 @@ export default function App() {
               {/* Social Proof */}
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
-                  <div className="w-[43px] h-[43px] rounded-full border-2 border-white">
-                    <img
-                      src={imgEllipse227}
-                      alt=""
-                      className="w-full h-full rounded-full object-cover"
-                    />
+                  <div className="border-2 border-white rounded-full">
+                    <Avatar name="Sarah R" size="sm" colorIndex={0} />
                   </div>
-                  <div className="w-[43px] h-[43px] rounded-full border-2 border-white">
-                    <img
-                      src={imgEllipse228}
-                      alt=""
-                      className="w-full h-full rounded-full object-cover"
-                    />
+                  <div className="border-2 border-white rounded-full">
+                    <Avatar name="John D" size="sm" colorIndex={1} />
                   </div>
-                  <div className="w-[43px] h-[43px] rounded-full border-2 border-white bg-[#61a94e] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-[#61a94e] flex items-center justify-center">
                     <span className="text-white font-['Poppins'] text-[12px]">
                       150+
                     </span>
@@ -1978,15 +1969,13 @@ export default function App() {
               >
                 {/* Desktop Layout */}
                 <div className="hidden md:flex gap-8 lg:gap-12 items-start">
-                  {/* Left - Profile Image */}
+                  {/* Left - Profile Avatar */}
                   <div className="flex-shrink-0">
-                    <div className="w-[120px] h-[120px] lg:w-[161px] lg:h-[161px] rounded-full overflow-hidden">
-                      <img
-                        src={imgEllipse227}
-                        alt="Christina, satisfied patient testimonial"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    <Avatar
+                      name={homePageTestimonials[currentTestimonial].name}
+                      size="xl"
+                      colorIndex={currentTestimonial}
+                    />
                   </div>
 
                   {/* Right - Content */}
@@ -2044,15 +2033,13 @@ export default function App() {
 
                 {/* Mobile Layout */}
                 <div className="md:hidden text-center">
-                  {/* Profile Image */}
+                  {/* Profile Avatar */}
                   <div className="flex justify-center mb-4">
-                    <div className="w-[90px] h-[90px] rounded-full overflow-hidden">
-                      <img
-                        src={imgEllipse227}
-                        alt="Christina, satisfied patient testimonial"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    <Avatar
+                      name={homePageTestimonials[currentTestimonial].name}
+                      size="lg"
+                      colorIndex={currentTestimonial}
+                    />
                   </div>
 
                   {/* Stars and Rating */}
