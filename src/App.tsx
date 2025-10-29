@@ -1270,7 +1270,7 @@ export default function App() {
               ].map((condition, index) => (
                 <ScrollFadeIn key={index} direction="up" delay={index * 0.1} duration={0.6}>
                   <div
-                    className={`bg-white ${condition.roundedClass} shadow-[0px_4px_17.5px_0px_rgba(0,0,0,0.25)] p-8 hover-lift cursor-pointer`}
+                    className={`bg-white ${condition.roundedClass} shadow-[0px_4px_17.5px_0px_rgba(0,0,0,0.25)] p-8 hover-lift cursor-pointer h-full flex flex-col`}
                   >
                   <div
                     className={`rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto`}
@@ -1287,7 +1287,7 @@ export default function App() {
                   <h3 className="font-['Poppins'] font-bold text-[20px] text-[#171a1f] text-center mb-3">
                     {condition.title}
                   </h3>
-                  <p className="font-['Poppins'] text-[14px] text-[#565d6d] text-center leading-[20px]">
+                  <p className="font-['Poppins'] text-[14px] text-[#565d6d] text-center leading-[20px] flex-grow">
                     {condition.description}
                   </p>
                 </div>
