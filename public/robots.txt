@@ -1,0 +1,28 @@
+# Robots.txt for Your Integrative Health
+# Production site: https://www.yourintegrativehealth.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.yourintegrativehealth.com/sitemap.xml
+
+# Block common unwanted bots (optional)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Crawl-delay for aggressive crawlers
+User-agent: Bingbot
+Crawl-delay: 1
+
+User-agent: Slurp
+Crawl-delay: 1
