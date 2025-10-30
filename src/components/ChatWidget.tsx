@@ -11,23 +11,48 @@ export default function ChatWidget() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Chat widget form submitted:", formData);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'e8589b11-f3e7-4a21-873d-ce53e47d8af1',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: 'New Chat Widget Message from Your Integrative Health',
+          from_name: 'Chat Widget - Your Integrative Health'
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setFormData({ name: "", email: "", message: "" });
+          setIsSubmitted(false);
+          setIsOpen(false);
+        }, 3000);
+      } else {
+        console.error('Chat widget submission failed:', result);
+        setIsSubmitting(false);
+        alert('Failed to send message. Please try again or use the contact form.');
+      }
+    } catch (error) {
+      console.error('Error submitting chat widget form:', error);
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({ name: "", email: "", message: "" });
-        setIsSubmitted(false);
-        setIsOpen(false);
-      }, 3000);
-    }, 1000);
+      alert('Failed to send message. Please try again or use the contact form.');
+    }
   };
 
   const handleChange = (
