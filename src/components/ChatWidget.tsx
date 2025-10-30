@@ -27,7 +27,8 @@ export default function ChatWidget() {
           email: formData.email,
           message: formData.message,
           subject: 'New Chat Widget Message from Your Integrative Health',
-          from_name: 'Chat Widget - Your Integrative Health'
+          from_name: 'Chat Widget - Your Integrative Health',
+          to: 'team@yourintegrativehealth.com'
         }),
       });
 

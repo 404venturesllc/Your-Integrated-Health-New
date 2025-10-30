@@ -42,7 +42,8 @@ export default function Contact({ setCurrentPage }: ContactProps) {
           phone: formData.phone,
           preferred_time: formData.preferredTime,
           message: formData.message,
-          subject: 'New Contact Form Submission from Your Integrative Health'
+          subject: 'New Contact Form Submission from Your Integrative Health',
+          to: 'team@yourintegrativehealth.com'
         }),
       });
 

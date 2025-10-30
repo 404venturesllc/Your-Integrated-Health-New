@@ -633,8 +633,8 @@ export default function App() {
                   <div className="border-2 border-white rounded-full">
                     <Avatar name="John D" size="sm" colorIndex={1} />
                   </div>
-                  <div className="w-10 h-10 rounded-full border-2 border-white bg-[#61a94e] flex items-center justify-center">
-                    <span className="text-white font-['Poppins'] text-[12px]">
+                  <div className="w-[43px] h-[43px] rounded-full border-2 border-white bg-[#61a94e] flex items-center justify-center">
+                    <span className="text-white font-['Poppins'] font-semibold text-[14px]">
                       150+
                     </span>
                   </div>
