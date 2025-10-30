@@ -397,7 +397,7 @@ export default function App() {
           <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between px-4 md:px-8 lg:px-16">
             {/* Logo */}
             <button
-              onClick={() => setCurrentPage("home")}
+              onClick={() => navigateTo("home")}
               className="h-[60px] md:h-[83px] w-[130px] md:w-[172px] flex-shrink-0 cursor-pointer"
               aria-label="Return to homepage"
             >
@@ -413,31 +413,31 @@ export default function App() {
             {/* Navigation Links - Hidden on mobile */}
             <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex gap-12 xl:gap-[87px] items-center font-['Poppins'] text-[18px] xl:text-[20px]">
               <button
-                onClick={() => setCurrentPage("services")}
+                onClick={() => navigateTo("services")}
                 className="text-black hover:text-[#61a94e] transition-colors"
               >
                 Services
               </button>
               <button
-                onClick={() => setCurrentPage("blog")}
+                onClick={() => navigateTo("blog")}
                 className="text-black hover:text-[#61a94e] transition-colors"
               >
                 Blog
               </button>
               <button
-                onClick={() => setCurrentPage("contact")}
+                onClick={() => navigateTo("contact")}
                 className="text-black hover:text-[#61a94e] transition-colors"
               >
                 Contacts
               </button>
               <button
-                onClick={() => setCurrentPage("about")}
+                onClick={() => navigateTo("about")}
                 className="text-black hover:text-[#61a94e] transition-colors"
               >
                 About
               </button>
               <button
-                onClick={() => setCurrentPage("faq")}
+                onClick={() => navigateTo("faq")}
                 className="text-black hover:text-[#61a94e] transition-colors"
               >
                 FAQ
@@ -501,7 +501,7 @@ export default function App() {
             <nav role="navigation" aria-label="Mobile navigation" className="flex flex-col py-4 px-4 md:px-8">
               <button
                 onClick={() => {
-                  setCurrentPage("services");
+                  navigateTo("services");
                   setIsMobileMenuOpen(false);
                 }}
                 className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
@@ -510,7 +510,7 @@ export default function App() {
               </button>
               <button
                 onClick={() => {
-                  setCurrentPage("blog");
+                  navigateTo("blog");
                   setIsMobileMenuOpen(false);
                 }}
                 className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
@@ -519,7 +519,7 @@ export default function App() {
               </button>
               <button
                 onClick={() => {
-                  setCurrentPage("contact");
+                  navigateTo("contact");
                   setIsMobileMenuOpen(false);
                 }}
                 className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
@@ -528,7 +528,7 @@ export default function App() {
               </button>
               <button
                 onClick={() => {
-                  setCurrentPage("about");
+                  navigateTo("about");
                   setIsMobileMenuOpen(false);
                 }}
                 className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
@@ -537,7 +537,7 @@ export default function App() {
               </button>
               <button
                 onClick={() => {
-                  setCurrentPage("faq");
+                  navigateTo("faq");
                   setIsMobileMenuOpen(false);
                 }}
                 className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
