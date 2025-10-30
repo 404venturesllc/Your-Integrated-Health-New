@@ -378,32 +378,8 @@ export default function Contact({ setCurrentPage }: ContactProps) {
             <h1 className="font-['Poppins'] font-bold text-[36px] md:text-[48px] lg:text-[56px] text-white mb-6 leading-tight">
               Get in Touch
             </h1>
-            <p className="font-['Poppins'] text-[18px] md:text-[20px] lg:text-[24px] text-white leading-relaxed mb-4">
+            <p className="font-['Poppins'] text-[18px] md:text-[20px] lg:text-[24px] text-white leading-relaxed">
               Ready to take the first step toward better health? We're here to answer your questions and help you get started.
-            </p>
-            <p className="font-['Poppins'] text-[16px] md:text-[18px] text-white/90 leading-relaxed">
-              Questions about our{" "}
-              <button
-                onClick={() => setCurrentPage("services")}
-                className="text-white font-semibold underline hover:text-white/80 transition-colors"
-              >
-                hormone balance programs
-              </button>
-              {" "}or how functional medicine works? Check out our{" "}
-              <button
-                onClick={() => setCurrentPage("blog")}
-                className="text-white font-semibold underline hover:text-white/80 transition-colors"
-              >
-                blog for expert insights
-              </button>
-              {" "}or read more{" "}
-              <button
-                onClick={() => setCurrentPage("about")}
-                className="text-white font-semibold underline hover:text-white/80 transition-colors"
-              >
-                about Megan Hormazdi
-              </button>
-              {" "}and her integrative approach.
             </p>
           </div>
         </div>

@@ -1009,25 +1009,8 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
             <h1 className="font-['Poppins'] font-bold text-[36px] md:text-[48px] lg:text-[56px] text-white mb-6 leading-tight">
               Health & Wellness Blog
             </h1>
-            <p className="font-['Poppins'] text-[18px] md:text-[20px] lg:text-[24px] text-white leading-relaxed mb-4">
+            <p className="font-['Poppins'] text-[18px] md:text-[20px] lg:text-[24px] text-white leading-relaxed">
               Expert insights on hormone health, weight loss, nutrition, and integrative wellness from Megan Hormazdi, NP.
-            </p>
-            <p className="font-['Poppins'] text-[16px] md:text-[18px] text-white/90 leading-relaxed">
-              Welcome to the Your Integrative Health blog, where{" "}
-              <button
-                onClick={() => setCurrentPage("about")}
-                className="text-white font-semibold underline hover:text-white/80 transition-colors"
-              >
-                Megan Hormazdi, NP
-              </button>
-              {" "}shares expert insights on hormone balance, metabolic health, and holistic wellness. Discover how our{" "}
-              <button
-                onClick={() => setCurrentPage("services")}
-                className="text-white font-semibold underline hover:text-white/80 transition-colors"
-              >
-                personalized programs
-              </button>
-              {" "}can help you achieve lasting results.
             </p>
           </div>
         </div>
