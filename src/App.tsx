@@ -160,7 +160,7 @@ export default function App() {
   if (currentPage === "services") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <Services setCurrentPage={setCurrentPage} />
+        <Services navigateTo={navigateTo} />
       </Suspense>
     );
   }
@@ -169,7 +169,7 @@ export default function App() {
   if (currentPage === "about") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <About setCurrentPage={setCurrentPage} />
+        <About navigateTo={navigateTo} />
       </Suspense>
     );
   }
@@ -178,7 +178,7 @@ export default function App() {
   if (currentPage === "faq") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <FAQ setCurrentPage={setCurrentPage} />
+        <FAQ navigateTo={navigateTo} />
       </Suspense>
     );
   }
@@ -187,7 +187,7 @@ export default function App() {
   if (currentPage === "contact") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <Contact setCurrentPage={setCurrentPage} />
+        <Contact navigateTo={navigateTo} />
       </Suspense>
     );
   }
@@ -196,7 +196,7 @@ export default function App() {
   if (selectedBlogId !== null) {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <BlogDetail setCurrentPage={setCurrentPage} blogId={selectedBlogId} onBackToBlog={() => setSelectedBlogId(null)} onBlogClick={setSelectedBlogId} />
+        <BlogDetail navigateTo={navigateTo} blogId={selectedBlogId} onBackToBlog={() => setSelectedBlogId(null)} onBlogClick={setSelectedBlogId} />
       </Suspense>
     );
   }
@@ -205,7 +205,7 @@ export default function App() {
   if (currentPage === "blog") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <Blog setCurrentPage={setCurrentPage} onBlogClick={navigateToBlogPost} />
+        <Blog navigateTo={navigateTo} onBlogClick={navigateToBlogPost} />
       </Suspense>
     );
   }
@@ -214,7 +214,7 @@ export default function App() {
   if (currentPage === "disclaimer") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <Disclaimer setCurrentPage={setCurrentPage} />
+        <Disclaimer navigateTo={navigateTo} />
       </Suspense>
     );
   }
@@ -223,7 +223,7 @@ export default function App() {
   if (currentPage === "privacy") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <PrivacyPolicy setCurrentPage={setCurrentPage} />
+        <PrivacyPolicy navigateTo={navigateTo} />
       </Suspense>
     );
   }
@@ -232,7 +232,7 @@ export default function App() {
   if (currentPage === "terms") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
-        <TermsOfUse setCurrentPage={setCurrentPage} />
+        <TermsOfUse navigateTo={navigateTo} />
       </Suspense>
     );
   }

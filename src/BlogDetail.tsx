@@ -51,7 +51,7 @@ import blog40Image from "./assets/blog/belly fat Blog 40.jpg";
 import blog41Image from "./assets/blog/Chornic fatugue Blog 41.jpg";
 
 interface BlogDetailProps {
-  setCurrentPage: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
+  navigateTo: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
   blogId: number;
   onBackToBlog: () => void;
   onBlogClick?: (blogId: number) => void;
@@ -3354,7 +3354,7 @@ const blogPosts = [
   // Add more blog posts as needed - this is a simplified version for now
 ];
 
-export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlogClick }: BlogDetailProps) {
+export default function BlogDetail({ navigateTo, blogId, onBackToBlog, onBlogClick }: BlogDetailProps) {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
@@ -3388,7 +3388,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
           <button
             onClick={() => {
               onBackToBlog();
-              setCurrentPage("blog");
+              navigateTo("blog");
             }}
             className="bg-[#61a94e] text-white px-6 py-3 rounded-lg hover:bg-[#549440] transition-colors"
           >
@@ -3524,7 +3524,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
           <button
             onClick={() => {
               onBackToBlog();
-              setCurrentPage("home");
+              navigateTo("home");
             }}
             className="h-[60px] md:h-[83px] w-[130px] md:w-[172px] flex-shrink-0"
             aria-label="Return to homepage"
@@ -3541,31 +3541,31 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
           {/* Navigation Links - Hidden on mobile */}
           <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex gap-12 xl:gap-[87px] items-center font-['Poppins'] text-[18px] xl:text-[20px]">
             <button
-              onClick={() => setCurrentPage("services")}
+              onClick={() => navigateTo("services")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               Services
             </button>
             <button
-              onClick={() => setCurrentPage("blog")}
+              onClick={() => navigateTo("blog")}
               className="text-[#61a94e]"
             >
               Blog
             </button>
             <button
-              onClick={() => setCurrentPage("contact")}
+              onClick={() => navigateTo("contact")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               Contacts
             </button>
             <button
-              onClick={() => setCurrentPage("about")}
+              onClick={() => navigateTo("about")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               About
             </button>
             <button
-              onClick={() => setCurrentPage("faq")}
+              onClick={() => navigateTo("faq")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               FAQ
@@ -3608,7 +3608,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
             <button
               onClick={() => {
                 onBackToBlog();
-                setCurrentPage("home");
+                navigateTo("home");
               }}
               className="text-gray-600 hover:text-[#236189] transition-colors"
             >
@@ -3616,7 +3616,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
             </button>
             <span className="text-gray-400">/</span>
             <button
-              onClick={() => setCurrentPage("blog")}
+              onClick={() => navigateTo("blog")}
               className="text-gray-600 hover:text-[#236189] transition-colors"
             >
               Blog
@@ -3633,7 +3633,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
         <button
           onClick={() => {
             onBackToBlog();
-            setCurrentPage("blog");
+            navigateTo("blog");
           }}
           className="flex items-center text-[#236189] hover:text-[#1a4a6a] transition-colors mb-8 group"
         >
@@ -3802,21 +3802,21 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
                 <p className="text-gray-700 mb-6">
                   Our{" "}
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     Metabolic Hormone Balance Program
                   </button>
                   {" "}addresses the root causes discussed in this article.{" "}
                   <button
-                    onClick={() => setCurrentPage("about")}
+                    onClick={() => navigateTo("about")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     Learn more about our approach
                   </button>
                   {" "}or{" "}
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     book a consultation
@@ -3831,21 +3831,21 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
                 <p className="text-gray-700 mb-6">
                   Explore our{" "}
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     comprehensive weight management programs
                   </button>
                   {" "}designed by{" "}
                   <button
-                    onClick={() => setCurrentPage("about")}
+                    onClick={() => navigateTo("about")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     functional medicine expert Megan Hormazdi
                   </button>
                   .{" "}
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     Get started today
@@ -3860,14 +3860,14 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
                 <p className="text-gray-700 mb-6">
                   Our{" "}
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     integrative care plans
                   </button>
                   {" "}include targeted nutrition strategies.{" "}
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     Schedule a consultation
@@ -3882,21 +3882,21 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
                 <p className="text-gray-700 mb-6">
                   Discover how our{" "}
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     functional medicine approach
                   </button>
                   {" "}addresses lifestyle and wellness from every angle.{" "}
                   <button
-                    onClick={() => setCurrentPage("about")}
+                    onClick={() => navigateTo("about")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     Meet our team
                   </button>
                   {" "}or{" "}
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="text-[#236189] font-semibold underline hover:text-[#61a94e] transition-colors"
                   >
                     contact us today
@@ -4024,7 +4024,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
               <ul className="space-y-3 font-['Poppins'] text-[#6f6c90]">
                 <li>
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     Services
@@ -4032,7 +4032,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
                 </li>
                 <li>
                   <button
-                    onClick={() => setCurrentPage("about")}
+                    onClick={() => navigateTo("about")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     About
@@ -4040,7 +4040,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
                 </li>
                 <li>
                   <button
-                    onClick={() => setCurrentPage("faq")}
+                    onClick={() => navigateTo("faq")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     FAQ
@@ -4048,7 +4048,7 @@ export default function BlogDetail({ setCurrentPage, blogId, onBackToBlog, onBlo
                 </li>
                 <li>
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     Contact

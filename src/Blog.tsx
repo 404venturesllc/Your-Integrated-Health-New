@@ -50,11 +50,11 @@ import blog40Image from "./assets/blog/belly fat Blog 40.jpg";
 import blog41Image from "./assets/blog/Chornic fatugue Blog 41.jpg";
 
 interface BlogProps {
-  setCurrentPage: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
+  navigateTo: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
   onBlogClick: (blogId: number) => void;
 }
 
-export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
+export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -826,7 +826,7 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between px-4 md:px-8 lg:px-16">
           {/* Logo */}
           <button
-            onClick={() => setCurrentPage("home")}
+            onClick={() => navigateTo("home")}
             className="h-[60px] md:h-[83px] w-[130px] md:w-[172px] flex-shrink-0"
             aria-label="Return to homepage"
           >
@@ -842,26 +842,26 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
           {/* Navigation Links - Hidden on mobile */}
           <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex gap-12 xl:gap-[87px] items-center font-['Poppins'] text-[18px] xl:text-[20px]">
             <button
-              onClick={() => setCurrentPage("services")}
+              onClick={() => navigateTo("services")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               Services
             </button>
             <span className="text-[#61a94e]">Blog</span>
             <button
-              onClick={() => setCurrentPage("contact")}
+              onClick={() => navigateTo("contact")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               Contacts
             </button>
             <button
-              onClick={() => setCurrentPage("about")}
+              onClick={() => navigateTo("about")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               About
             </button>
             <button
-              onClick={() => setCurrentPage("faq")}
+              onClick={() => navigateTo("faq")}
               className="text-black hover:text-[#61a94e] transition-colors"
             >
               FAQ
@@ -900,17 +900,17 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
           { label: "Home", page: "home" },
           { label: "Blog", isActive: true }
         ]}
-        setCurrentPage={setCurrentPage}
+        navigateTo={navigateTo}
       />
 
       {isMobileMenuOpen && (
         <div id="mobile-menu-blog" className="lg:hidden absolute top-[100px] left-0 right-0 bg-white border-b border-gray-100 shadow-lg z-50">
           <nav role="navigation" aria-label="Mobile navigation" className="flex flex-col py-4 px-4 md:px-8">
-            <button onClick={() => { setCurrentPage("services"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Services</button>
+            <button onClick={() => { navigateTo("services"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Services</button>
             <span className="py-3 px-4 text-[#61a94e] font-['Poppins'] text-[16px] font-semibold">Blog</span>
-            <button onClick={() => { setCurrentPage("contact"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Contacts</button>
-            <button onClick={() => { setCurrentPage("about"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">About</button>
-            <button onClick={() => { setCurrentPage("faq"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">FAQ</button>
+            <button onClick={() => { navigateTo("contact"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Contacts</button>
+            <button onClick={() => { navigateTo("about"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">About</button>
+            <button onClick={() => { navigateTo("faq"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">FAQ</button>
             <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="mt-4 bg-[#61a94e] text-white px-6 py-3 rounded-[10px] font-['Poppins'] font-medium text-[16px] hover:bg-[#549440] transition-colors text-center">Get Started</a>
           </nav>
         </div>
@@ -1400,7 +1400,7 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
               <ul className="space-y-3 font-['Poppins'] text-[#6f6c90]">
                 <li>
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     Services
@@ -1408,7 +1408,7 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
                 </li>
                 <li>
                   <button
-                    onClick={() => setCurrentPage("about")}
+                    onClick={() => navigateTo("about")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     About
@@ -1416,7 +1416,7 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
                 </li>
                 <li>
                   <button
-                    onClick={() => setCurrentPage("faq")}
+                    onClick={() => navigateTo("faq")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     FAQ
@@ -1424,7 +1424,7 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
                 </li>
                 <li>
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="hover:text-[#61a94e] transition-colors"
                   >
                     Contact

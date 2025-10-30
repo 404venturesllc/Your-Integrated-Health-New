@@ -7,10 +7,10 @@ import Breadcrumb from "./components/Breadcrumb";
 import { generateBreadcrumbSchema } from "./utils/breadcrumbSchema";
 
 interface PrivacyPolicyProps {
-  setCurrentPage: (page: "home" | "services" | "about" | "faq" | "contact" | "blog" | "disclaimer" | "privacy" | "terms") => void;
+  navigateTo: (page: "home" | "services" | "about" | "faq" | "contact" | "blog" | "disclaimer" | "privacy" | "terms") => void;
 }
 
-export default function PrivacyPolicy({ setCurrentPage }: PrivacyPolicyProps) {
+export default function PrivacyPolicy({ navigateTo }: PrivacyPolicyProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -51,7 +51,7 @@ export default function PrivacyPolicy({ setCurrentPage }: PrivacyPolicyProps) {
       <header className="bg-white h-[100px] sticky top-0 z-50 border-b border-gray-100">
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between px-4 md:px-8 lg:px-16">
           {/* Logo */}
-          <button onClick={() => setCurrentPage("home")} className="h-[60px] md:h-[83px] w-[130px] md:w-[172px] flex-shrink-0" aria-label="Return to homepage">
+          <button onClick={() => navigateTo("home")} className="h-[60px] md:h-[83px] w-[130px] md:w-[172px] flex-shrink-0" aria-label="Return to homepage">
             <div className="h-full w-full overflow-hidden relative">
               <img
                 alt="Your Integrative Health logo"
@@ -63,19 +63,19 @@ export default function PrivacyPolicy({ setCurrentPage }: PrivacyPolicyProps) {
 
           {/* Navigation Links - Hidden on mobile */}
           <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex gap-12 xl:gap-[87px] items-center font-['Poppins'] text-[18px] xl:text-[20px]">
-            <button onClick={() => setCurrentPage("services")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("services")} className="text-black hover:text-[#61a94e] transition-colors">
               Services
             </button>
-            <button onClick={() => setCurrentPage("blog")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("blog")} className="text-black hover:text-[#61a94e] transition-colors">
               Blog
             </button>
-            <button onClick={() => setCurrentPage("contact")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("contact")} className="text-black hover:text-[#61a94e] transition-colors">
               Contacts
             </button>
-            <button onClick={() => setCurrentPage("about")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("about")} className="text-black hover:text-[#61a94e] transition-colors">
               About
             </button>
-            <button onClick={() => setCurrentPage("faq")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("faq")} className="text-black hover:text-[#61a94e] transition-colors">
               FAQ
             </button>
           </nav>
@@ -100,7 +100,7 @@ export default function PrivacyPolicy({ setCurrentPage }: PrivacyPolicyProps) {
           { label: "Home", page: "home" },
           { label: "Privacy Policy", isActive: true }
         ]}
-        setCurrentPage={setCurrentPage}
+        navigateTo={navigateTo}
       />
 
       <main>
@@ -361,22 +361,22 @@ export default function PrivacyPolicy({ setCurrentPage }: PrivacyPolicyProps) {
                 </h3>
                 <ul className="space-y-3">
                   <li>
-                    <button onClick={() => setCurrentPage("services")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
+                    <button onClick={() => navigateTo("services")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
                       Services
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => setCurrentPage("about")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
+                    <button onClick={() => navigateTo("about")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
                       About
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => setCurrentPage("faq")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
+                    <button onClick={() => navigateTo("faq")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
                       FAQ
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => setCurrentPage("contact")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
+                    <button onClick={() => navigateTo("contact")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
                       Contact
                     </button>
                   </li>
@@ -413,17 +413,17 @@ export default function PrivacyPolicy({ setCurrentPage }: PrivacyPolicyProps) {
                 </h3>
                 <ul className="space-y-3">
                   <li>
-                    <button onClick={() => setCurrentPage("privacy")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
+                    <button onClick={() => navigateTo("privacy")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
                       Privacy Policy
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => setCurrentPage("terms")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
+                    <button onClick={() => navigateTo("terms")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
                       Terms of Use
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => setCurrentPage("disclaimer")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
+                    <button onClick={() => navigateTo("disclaimer")} className="font-['Poppins',sans-serif] text-[15px] sm:text-[18px] text-[#6f6c90] hover:text-[#61a94e] transition-colors inline-block cursor-pointer bg-transparent border-none p-0 text-left">
                       Disclaimer
                     </button>
                   </li>
@@ -459,19 +459,19 @@ export default function PrivacyPolicy({ setCurrentPage }: PrivacyPolicyProps) {
                 </p>
                 <div className="flex items-center gap-6">
                   <button
-                    onClick={() => setCurrentPage('privacy')}
+                    onClick={() => navigateTo('privacy')}
                     className="font-['Poppins',sans-serif] text-[14px] text-[#6f6c90] hover:text-[#61a94e] transition-colors cursor-pointer bg-transparent border-none p-0"
                   >
                     Privacy
                   </button>
                   <button
-                    onClick={() => setCurrentPage('terms')}
+                    onClick={() => navigateTo('terms')}
                     className="font-['Poppins',sans-serif] text-[14px] text-[#6f6c90] hover:text-[#61a94e] transition-colors cursor-pointer bg-transparent border-none p-0"
                   >
                     Terms
                   </button>
                   <button
-                    onClick={() => setCurrentPage('disclaimer')}
+                    onClick={() => navigateTo('disclaimer')}
                     className="font-['Poppins',sans-serif] text-[14px] text-[#6f6c90] hover:text-[#61a94e] transition-colors cursor-pointer bg-transparent border-none p-0"
                   >
                     Disclaimer

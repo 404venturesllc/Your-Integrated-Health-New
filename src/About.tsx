@@ -13,10 +13,10 @@ import Breadcrumb from "./components/Breadcrumb";
 import { generateBreadcrumbSchema } from "./utils/breadcrumbSchema";
 
 interface AboutProps {
-  setCurrentPage: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
+  navigateTo: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
 }
 
-export default function About({ setCurrentPage }: AboutProps) {
+export default function About({ navigateTo }: AboutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -137,7 +137,7 @@ export default function About({ setCurrentPage }: AboutProps) {
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between px-4 md:px-8 lg:px-16">
           {/* Logo */}
           <button
-            onClick={() => setCurrentPage("home")}
+            onClick={() => navigateTo("home")}
             className="h-[60px] md:h-[83px] w-[130px] md:w-[172px] flex-shrink-0"
             aria-label="Return to homepage"
           >
@@ -152,17 +152,17 @@ export default function About({ setCurrentPage }: AboutProps) {
 
           {/* Navigation Links - Hidden on mobile */}
           <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex gap-12 xl:gap-[87px] items-center font-['Poppins'] text-[18px] xl:text-[20px]">
-            <button onClick={() => setCurrentPage("services")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("services")} className="text-black hover:text-[#61a94e] transition-colors">
               Services
             </button>
-            <button onClick={() => setCurrentPage("blog")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("blog")} className="text-black hover:text-[#61a94e] transition-colors">
               Blog
             </button>
-            <button onClick={() => setCurrentPage("contact")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("contact")} className="text-black hover:text-[#61a94e] transition-colors">
               Contacts
             </button>
             <span className="text-[#61a94e]">About</span>
-            <button onClick={() => setCurrentPage("faq")} className="text-black hover:text-[#61a94e] transition-colors">
+            <button onClick={() => navigateTo("faq")} className="text-black hover:text-[#61a94e] transition-colors">
               FAQ
             </button>
           </nav>
@@ -199,18 +199,18 @@ export default function About({ setCurrentPage }: AboutProps) {
           { label: "Home", page: "home" },
           { label: "About", isActive: true }
         ]}
-        setCurrentPage={setCurrentPage}
+        navigateTo={navigateTo}
       />
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <div id="mobile-menu-about" className="lg:hidden absolute top-[100px] left-0 right-0 bg-white border-b border-gray-100 shadow-lg z-50">
           <nav role="navigation" aria-label="Mobile navigation" className="flex flex-col py-4 px-4 md:px-8">
-            <button onClick={() => { setCurrentPage("services"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Services</button>
-            <button onClick={() => { setCurrentPage("blog"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Blog</button>
-            <button onClick={() => { setCurrentPage("contact"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Contacts</button>
+            <button onClick={() => { navigateTo("services"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Services</button>
+            <button onClick={() => { navigateTo("blog"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Blog</button>
+            <button onClick={() => { navigateTo("contact"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">Contacts</button>
             <span className="py-3 px-4 text-[#61a94e] font-['Poppins'] text-[16px] font-semibold">About</span>
-            <button onClick={() => { setCurrentPage("faq"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">FAQ</button>
+            <button onClick={() => { navigateTo("faq"); setIsMobileMenuOpen(false); }} className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]">FAQ</button>
             <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="mt-4 bg-[#61a94e] text-white px-6 py-3 rounded-[10px] font-['Poppins'] font-medium text-[16px] hover:bg-[#549440] transition-colors text-center">Get Started</a>
           </nav>
         </div>
@@ -514,7 +514,7 @@ export default function About({ setCurrentPage }: AboutProps) {
                 <p>
                   Integrative Medicine delves deep into the root causes of physical, emotional, or spiritual challenges, paving the way for comprehensive healing. I've distilled my wealth of knowledge around mental health, holistic wellness, and harmonizing hormones, and transformed it into the{" "}
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="text-white font-bold underline hover:text-white/90 transition-colors"
                   >
                     Metabolic Hormone Balance Program
@@ -525,14 +525,14 @@ export default function About({ setCurrentPage }: AboutProps) {
                 <p className="font-semibold text-[#61a94e]">
                   If you are looking for answers,{" "}
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="text-[#61a94e] underline hover:text-[#549440] transition-colors"
                   >
                     schedule a free consultation
                   </button>
                   {" "}or explore our{" "}
                   <button
-                    onClick={() => setCurrentPage("blog")}
+                    onClick={() => navigateTo("blog")}
                     className="text-[#61a94e] underline hover:text-[#549440] transition-colors"
                   >
                     evidence-based approach
@@ -650,7 +650,7 @@ export default function About({ setCurrentPage }: AboutProps) {
                 <p>
                   Integrative Medicine delves deep into the root causes of physical, emotional, or spiritual challenges, paving the way for comprehensive healing. I've distilled my wealth of knowledge around mental health, holistic wellness, and harmonizing hormones, and transformed it into the{" "}
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigateTo("services")}
                     className="text-[#236189] font-bold underline hover:text-[#61a94e] transition-colors"
                   >
                     Metabolic Hormone Balance Program
@@ -661,14 +661,14 @@ export default function About({ setCurrentPage }: AboutProps) {
                 <p className="font-semibold text-[#236189]">
                   If you are looking for answers,{" "}
                   <button
-                    onClick={() => setCurrentPage("contact")}
+                    onClick={() => navigateTo("contact")}
                     className="text-[#236189] underline hover:text-[#61a94e] transition-colors"
                   >
                     schedule a free consultation
                   </button>
                   {" "}or explore our{" "}
                   <button
-                    onClick={() => setCurrentPage("blog")}
+                    onClick={() => navigateTo("blog")}
                     className="text-[#236189] underline hover:text-[#61a94e] transition-colors"
                   >
                     evidence-based approach

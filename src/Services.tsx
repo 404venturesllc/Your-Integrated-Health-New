@@ -13,10 +13,10 @@ import Breadcrumb from "./components/Breadcrumb";
 import { generateBreadcrumbSchema } from "./utils/breadcrumbSchema";
 
 interface ServicesProps {
-  setCurrentPage: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
+  navigateTo: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
 }
 
-export default function Services({ setCurrentPage }: ServicesProps) {
+export default function Services({ navigateTo }: ServicesProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -79,7 +79,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between px-4 md:px-8 lg:px-16">
           {/* Logo */}
           <button
-            onClick={() => setCurrentPage("home")}
+            onClick={() => navigateTo("home")}
             className="h-[60px] md:h-[83px] w-[130px] md:w-[172px] flex-shrink-0"
             aria-label="Return to homepage"
           >
@@ -95,10 +95,10 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           {/* Navigation Links - Hidden on mobile */}
           <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex gap-12 xl:gap-[87px] items-center font-['Poppins'] text-[18px] xl:text-[20px]">
             <span className="text-[#61a94e]">Services</span>
-            <button onClick={() => setCurrentPage("blog")} className="text-black hover:text-[#61a94e] transition-colors">Blog</button>
-            <button onClick={() => setCurrentPage("contact")} className="text-black hover:text-[#61a94e] transition-colors">Contacts</button>
-            <button onClick={() => setCurrentPage("about")} className="text-black hover:text-[#61a94e] transition-colors">About</button>
-            <button onClick={() => setCurrentPage("faq")} className="text-black hover:text-[#61a94e] transition-colors">FAQ</button>
+            <button onClick={() => navigateTo("blog")} className="text-black hover:text-[#61a94e] transition-colors">Blog</button>
+            <button onClick={() => navigateTo("contact")} className="text-black hover:text-[#61a94e] transition-colors">Contacts</button>
+            <button onClick={() => navigateTo("about")} className="text-black hover:text-[#61a94e] transition-colors">About</button>
+            <button onClick={() => navigateTo("faq")} className="text-black hover:text-[#61a94e] transition-colors">FAQ</button>
           </nav>
 
           {/* Get Started Button */}
@@ -133,7 +133,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           { label: "Home", page: "home" },
           { label: "Services", isActive: true }
         ]}
-        setCurrentPage={setCurrentPage}
+        navigateTo={navigateTo}
       />
 
       {/* Mobile Menu Dropdown */}
@@ -145,7 +145,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
             </span>
             <button
               onClick={() => {
-                setCurrentPage("blog");
+                navigateTo("blog");
                 setIsMobileMenuOpen(false);
               }}
               className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
@@ -154,7 +154,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
             </button>
             <button
               onClick={() => {
-                setCurrentPage("contact");
+                navigateTo("contact");
                 setIsMobileMenuOpen(false);
               }}
               className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
@@ -163,7 +163,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
             </button>
             <button
               onClick={() => {
-                setCurrentPage("about");
+                navigateTo("about");
                 setIsMobileMenuOpen(false);
               }}
               className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
@@ -172,7 +172,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
             </button>
             <button
               onClick={() => {
-                setCurrentPage("faq");
+                navigateTo("faq");
                 setIsMobileMenuOpen(false);
               }}
               className="text-left py-3 px-4 text-[#171a1f] hover:bg-[#f6faf5] hover:text-[#61a94e] transition-colors rounded-lg font-['Poppins'] text-[16px]"
