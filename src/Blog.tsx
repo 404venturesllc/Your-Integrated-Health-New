@@ -1164,7 +1164,11 @@ export default function Blog({ setCurrentPage, onBlogClick }: BlogProps) {
             {regularPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.08)] overflow-hidden transition-all hover:shadow-[0px_8px_30px_0px_rgba(97,169,78,0.2)] hover:-translate-y-1 scroll-animation"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  onBlogClick(post.id);
+                }}
+                className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.08)] overflow-hidden transition-all hover:shadow-[0px_8px_30px_0px_rgba(97,169,78,0.2)] hover:-translate-y-1 scroll-animation cursor-pointer"
               >
                 {/* Image */}
                 <div className="relative h-[220px] overflow-hidden">
