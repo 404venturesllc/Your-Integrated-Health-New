@@ -36,7 +36,7 @@ export default function Contact({ navigateTo }: ContactProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'e8589b11-f3e7-4a21-873d-ce53e47d8af1',
+          access_key: '3b77e7c7-96c5-4912-b619-3243a83acf22',
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
