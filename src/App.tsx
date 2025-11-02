@@ -46,10 +46,11 @@ const BlogDetail = lazy(() => import("./BlogDetail"));
 const Disclaimer = lazy(() => import("./Disclaimer"));
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy"));
 const TermsOfUse = lazy(() => import("./TermsOfUse"));
+const ZRTHormoneTest = lazy(() => import("./ZRTHormoneTest"));
 
 export default function App() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(1);
-  const [currentPage, setCurrentPage] = useState<"home" | "services" | "about" | "faq" | "contact" | "blog" | "disclaimer" | "privacy" | "terms">("home");
+  const [currentPage, setCurrentPage] = useState<"home" | "services" | "about" | "faq" | "contact" | "blog" | "disclaimer" | "privacy" | "terms" | "zrt-hormone-test">("home");
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -91,6 +92,8 @@ export default function App() {
       setCurrentPage('privacy');
     } else if (path === '/terms') {
       setCurrentPage('terms');
+    } else if (path === '/zrt-hormone-test') {
+      setCurrentPage('zrt-hormone-test');
     }
 
     // Handle browser back/forward buttons
@@ -233,6 +236,15 @@ export default function App() {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
         <TermsOfUse navigateTo={navigateTo} />
+      </Suspense>
+    );
+  }
+
+  // If we're on the ZRT hormone test page, render that instead
+  if (currentPage === "zrt-hormone-test") {
+    return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
+        <ZRTHormoneTest />
       </Suspense>
     );
   }
