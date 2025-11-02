@@ -445,7 +445,7 @@ export default function App() {
             </nav>
 
             {/* Get Started Button */}
-            <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="hidden md:flex items-center justify-center bg-[#61a94e] text-white px-5 xl:px-6 py-2.5 rounded-[10px] font-['Poppins'] font-medium text-[18px] xl:text-[20px] hover:bg-[#549440] transition-all hover-glow flex-shrink-0">
+            <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" className="hidden md:flex items-center justify-center bg-[#61a94e] text-white px-5 xl:px-6 py-2.5 rounded-[10px] font-['Poppins'] font-medium text-[18px] xl:text-[20px] hover:bg-[#549440] transition-all hover-glow flex-shrink-0">
               Get Started
             </a>
 
@@ -546,8 +546,6 @@ export default function App() {
               </button>
               <a
                 href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="mt-4 bg-[#61a94e] text-white px-6 py-3 rounded-[10px] font-['Poppins'] font-medium text-[16px] hover:bg-[#549440] transition-colors text-center"
               >
                 Get Started
@@ -613,7 +611,7 @@ export default function App() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[rgba(97,169,78,0.54)] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-6 md:px-8 py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[rgba(97,169,78,0.7)] transition-all hover-glow flex items-center justify-center">
+                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" className="bg-[rgba(97,169,78,0.54)] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-6 md:px-8 py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[rgba(97,169,78,0.7)] transition-all hover-glow flex items-center justify-center">
                   Book Your Free Consultation
                 </a>
                 <button
@@ -1439,7 +1437,7 @@ export default function App() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-6 md:px-8 py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
+                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-6 md:px-8 py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
                   Book Your Free Consultation
                 </a>
                 <button 
@@ -1625,7 +1623,7 @@ export default function App() {
 
                   {/* CTA Buttons */}
                   <div className="flex gap-4">
-                    <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-12 py-4 rounded-[10px] font-['Poppins'] font-medium text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
+                    <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-12 py-4 rounded-[10px] font-['Poppins'] font-medium text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
                       Book Your Free Consultation
                     </a>
                     <button 
@@ -1693,7 +1691,7 @@ export default function App() {
                 >
                   Learn More
                 </button>
-                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-6 py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
+                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white px-6 py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
                   Book Your Free Consultation
                 </a>
               </div>
@@ -1869,7 +1867,7 @@ export default function App() {
                     >
                       Learn More
                     </button>
-                    <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] h-[58px] rounded-[10px] text-white font-['Poppins'] font-medium text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
+                    <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" className="bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] h-[58px] rounded-[10px] text-white font-['Poppins'] font-medium text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
                       Book Your Free Consultation
                     </a>
                   </div>
@@ -2495,10 +2493,8 @@ export default function App() {
                     className="w-full h-[50px] bg-white rounded-[25px] px-6 font-['Poppins'] text-[12px] text-[#aeaeae] focus:outline-none focus:ring-2 focus:ring-white/50 text-left"
                   />
                 </div>
-                <a 
-                  href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfG16YmMooW9WLD_6ZZnzT0zo3SptcXTxQY87BwzNKXtxZbPQ/viewform"
                   className="w-full h-[50px] bg-white rounded-[25px] text-[#236189] font-['Poppins'] font-semibold text-[13.19px] uppercase hover:bg-white/90 transition-colors flex items-center justify-center gap-2"
                 >
                   Start The Quiz
@@ -2552,10 +2548,8 @@ export default function App() {
                       className="w-full h-[50px] bg-white rounded-[25px] px-6 font-['Poppins'] text-[12px] text-[#aeaeae] focus:outline-none focus:ring-2 focus:ring-white/50 text-left"
                     />
                   </div>
-                  <a 
-                    href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfG16YmMooW9WLD_6ZZnzT0zo3SptcXTxQY87BwzNKXtxZbPQ/viewform"
                     className="w-full h-[50px] bg-white rounded-[25px] text-[#236189] font-['Poppins'] font-semibold text-[13.19px] uppercase hover:bg-white/90 transition-colors flex items-center justify-center gap-2 mt-6"
                   >
                     Start The Quiz
@@ -2916,7 +2910,7 @@ export default function App() {
                 </div>
 
                 {/* Centered button */}
-                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" target="_blank" rel="noopener noreferrer" className="w-full bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
+                <a href="https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368" className="w-full bg-[#61a94e] border border-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-white py-3 md:py-4 rounded-[10px] font-['Poppins'] font-medium text-[18px] md:text-[20px] hover:bg-[#549440] transition-colors flex items-center justify-center">
                   Book Your Free Consultation
                 </a>
               </div>
