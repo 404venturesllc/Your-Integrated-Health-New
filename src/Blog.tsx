@@ -62,7 +62,9 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
 
+  useEffect(() => {
     // Intersection Observer for scroll animations
     const observerOptions = {
       threshold: 0.1,
@@ -77,12 +79,18 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
       });
     }, observerOptions);
 
-    // Observe all elements with scroll-animation classes
-    const animatedElements = document.querySelectorAll('.scroll-animation, .scroll-animation-fade, .scroll-animation-left, .scroll-animation-right');
-    animatedElements.forEach(el => observer.observe(el));
+    // Small delay to ensure DOM is updated
+    const timeoutId = setTimeout(() => {
+      // Observe all elements with scroll-animation classes
+      const animatedElements = document.querySelectorAll('.scroll-animation, .scroll-animation-fade, .scroll-animation-left, .scroll-animation-right');
+      animatedElements.forEach(el => observer.observe(el));
+    }, 50);
 
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
+  }, [selectedCategory]);
 
   const blogPosts = [
     {
@@ -547,190 +555,23 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
           image: blog41Image,
           featured: false,
         },
-        {
-          id: 43,
-          title: "Unlocking the Secrets to Optimal Brain Health: The Key Nutrients and Lifestyle Strategies",
-          excerpt: "The brain is arguably the most important organ in the body, responsible for controlling all bodily functions. Supporting brain health through targeted nutrition and supplementation may serve as an assistive strategy against cognitive decline.",
-          category: "Mental Wellness",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "9 min read",
-          image: blog25Image,
-          featured: false,
-        },
-        {
-          id: 44,
-          title: "Uncovering the Root Cause of Anxiety: A Comprehensive Guide to Supporting Mental-Emotional Wellness",
-          excerpt: "Anxiety is a common mental health issue that affects millions of people worldwide. An integrated approach to mental-emotional wellness that considers factors such as diet, nutrient deficiencies, sleep habits, and psychological stress provides comprehensive care.",
-          category: "Mental Wellness",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "8 min read",
-          image: blog26Image,
-          featured: false,
-        },
-        {
-          id: 45,
-          title: "Feeding Your Mood: A Nutritional Approach to Beating Depression",
-          excerpt: "Depression is a mental health condition that affects millions of people worldwide. Given the multifactorial nature of depression, an integrated care model that incorporates nutritional applications and lifestyle strategies can help support mental-emotional wellness.",
-          category: "Mental Wellness",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "7 min read",
-          image: blog27Image,
-          featured: false,
-        },
-        {
-          id: 46,
-          title: "Sleep Better, Live Better: A Comprehensive Guide to Improving Your Sleep Quality and Overall Health",
-          excerpt: "Sleep is an essential aspect of our lives that plays a crucial role in maintaining overall health and wellbeing. Disrupted sleep patterns can have negative effects on various physiological functions, including concentration, memory, and cardiovascular function.",
-          category: "Lifestyle",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "8 min read",
-          image: blog28Image,
-          featured: false,
-        },
-        {
-          id: 47,
-          title: "Say Goodbye to Joint Pain: The Ultimate Guide to Supporting Healthy Joints and Connective Tissues!",
-          excerpt: "Osteoarthritis affects millions of Americans and is the leading cause of disability among adults. This clinical protocol is designed to support joint integrity and a healthy inflammatory response in connective tissues through diet and lifestyle interventions.",
-          category: "Lifestyle",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "7 min read",
-          image: blog29Image,
-          featured: false,
-        },
-        {
-          id: 48,
-          title: "Unlocking the Hidden Cause of Chronic Health Issues: Understanding Intestinal Permeability and How to Heal Your Gut",
-          excerpt: "Intestinal permeability, also known as 'leaky gut syndrome,' is a condition in which the lining of the intestines becomes more porous, allowing bacteria, toxins, and undigested food particles to pass through the gut wall and into the bloodstream.",
-      category: "Nutrition",
-      author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-      readTime: "8 min read",
-          image: blog30Image,
-      featured: false,
-    },
-    {
-          id: 49,
-          title: "Understanding Endometriosis: Symptoms, Diagnosis, and Therapeutic Diet and Lifestyle Interventions",
-          excerpt: "Endometriosis is a chronic disorder that affects an estimated 1 in 10 reproductive-age individuals. It is a condition in which endometrial-like tissue is found outside the uterine cavity, leading to chronic pelvic pain, infertility, and other associated symptoms.",
-      category: "Hormone Health",
-      author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-      readTime: "9 min read",
-          image: blog31Image,
-          featured: false,
-        },
-        {
-          id: 50,
-          title: "Achieve Radiant Skin: Evidence-Based Approaches to Tackling Acne",
-          excerpt: "Acne is a common skin condition that affects individuals of all ages, with the majority of cases occurring during adolescence. This clinical protocol discusses evidence-based lifestyle and dietary interventions for acne to support skin health and prevent flare-ups.",
-          category: "Hormone Health",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "6 min read",
-          image: blog32Image,
-          featured: false,
-        },
-        {
-          id: 51,
-          title: "Combat Fatigue and Support Mitochondrial Energy Production",
-          excerpt: "Chronic Fatigue Syndrome is a complex illness that affects millions of people worldwide. Research has shown that oxidative stress, inflammation, and mitochondrial dysfunction may play a role in its development.",
-          category: "Lifestyle",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "8 min read",
-          image: blog33Image,
-          featured: false,
-        },
-        {
-          id: 52,
-          title: "Premenstrual Syndrome (PMS)",
-          excerpt: "Premenstrual Syndrome affects a significant portion of females of reproductive age, with approximately 80% to 90% of menstruating individuals reporting experiencing at least one PMS symptom during their life.",
-          category: "Hormone Health",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "6 min read",
-          image: blog34Image,
-          featured: false,
-        },
-        {
-          id: 53,
-          title: "Managing Weight and Comorbidities",
-          excerpt: "Excess weight is associated with a variety of comorbidities, including cardiovascular disease, type 2 diabetes, certain types of cancer, and other chronic health conditions. Healthy weight management is a critical component in mitigating chronic disease.",
-          category: "Weight Loss",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "7 min read",
-          image: blog35Image,
-          featured: false,
-        },
-        {
-          id: 54,
-          title: "PCOS No More - Your Path to Hormonal Balance and Optimal Health",
-          excerpt: "Polycystic Ovary Syndrome is a common reproductive disorder that affects millions of women in the United States alone. This condition is characterized by multiple comorbidities, including insulin resistance, which can increase the risk of developing type 2 diabetes.",
-          category: "Hormone Health",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "9 min read",
-          image: blog36Image,
-          featured: false,
-        },
-        {
-          id: 55,
-      title: "9 Health Secrets for Women Over 50",
-      excerpt: "As of 2020, life expectancy for women in the United States is 80.5 years, and you may live much longer than that. Taking care of your health can help you to celebrate more birthdays and increase the quality of your life.",
-      category: "Lifestyle",
-      author: "Megan Hormazdi, NP",
-      date: "April 09, 2023",
-      readTime: "8 min read",
-      image: blog37Image,
-          featured: false,
-        },
-        {
-          id: 56,
-          title: "What Every Woman Ought to Know About Menopausal Weight Gain",
-          excerpt: "Menopausal weight gain can have consequences more serious than outgrowing your favorite pair of jeans. Find out how middle age spread affects your body and what you can do about it.",
-          category: "Hormone Health",
-          author: "Megan Hormazdi, NP",
-          date: "April 09, 2023",
-          readTime: "6 min read",
-          image: blog38Image,
-          featured: false,
-        },
-        {
-          id: 57,
-          title: "New Help for Natural Arthritis Pain Relief",
-          excerpt: "Any progress in natural pain relief is welcome news for millions of adults who struggle with arthritis. A recent study suggests that the spice turmeric may provide some relief.",
-          category: "Lifestyle",
-          author: "Megan Hormazdi, NP",
-          date: "July 22, 2022",
-          readTime: "5 min read",
-          image: blog39Image,
-          featured: false,
-        },
-        {
-          id: 58,
-          title: "The Surprising Truth about Losing Weight After 40",
-          excerpt: "As you grow older, it often becomes more difficult to manage your weight. However, the reasons may be different than you think. A recent study challenges the conventional wisdom about metabolism across the lifespan.",
-          category: "Weight Loss",
-          author: "Megan Hormazdi, NP",
-          date: "July 22, 2022",
-          readTime: "6 min read",
-          image: blog1Image,
-      featured: false,
-    },
   ];
 
   const filteredPosts = selectedCategory === "All"
     ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
 
-  const featuredPost = blogPosts.find(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const featuredPost = selectedCategory === "All" ? filteredPosts.find(post => post.featured) : null;
+  const regularPosts = selectedCategory === "All"
+    ? filteredPosts.filter(post => !post.featured)
+    : filteredPosts;
+
+  // Debug logging
+  console.log('Selected Category:', selectedCategory);
+  console.log('Total Blog Posts:', blogPosts.length);
+  console.log('Filtered Posts:', filteredPosts.length);
+  console.log('Featured Post:', featuredPost?.title || 'None');
+  console.log('Regular Posts:', regularPosts.length);
 
   return (
     <>
@@ -1016,8 +857,8 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
         </div>
       </section>
 
-      {/* Featured Post Section */}
-      {featuredPost && (
+      {/* Featured Post Section - Only show when "All" is selected */}
+      {featuredPost && selectedCategory === "All" && (
         <section className="py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden">
           {/* Decorative Shapes */}
           <div className="absolute right-0 top-[20%] w-[80px] md:w-[160px] lg:w-[280px] h-[190px] md:h-[380px] lg:h-[665px] rotate-[345deg] opacity-30 -mr-8 md:-mr-16 lg:-mr-24 z-0">
@@ -1161,7 +1002,20 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
 
           {/* Blog Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {regularPosts.map((post) => (
+            {regularPosts.length === 0 && !featuredPost ? (
+              <div className="col-span-full text-center py-16">
+                <p className="font-['Poppins'] text-[20px] text-[#565d6d] mb-4">
+                  No articles found in this category.
+                </p>
+                <button
+                  onClick={() => setSelectedCategory("All")}
+                  className="bg-[#61a94e] text-white px-6 py-3 rounded-[10px] font-['Poppins'] font-medium text-[16px] hover:bg-[#549440] transition-colors"
+                >
+                  View All Articles
+                </button>
+              </div>
+            ) : (
+              regularPosts.map((post) => (
               <article
                 key={post.id}
                 onClick={() => {
@@ -1258,7 +1112,8 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
                   </button>
                 </div>
               </article>
-            ))}
+              ))
+            )}
           </div>
 
           {/* Load More Button */}
