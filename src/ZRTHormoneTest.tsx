@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { CheckCircle2, PlayCircle, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
-import heroImage from "./assets/91204406f01523c66794714f7b4dc1dabb04d514.webp";
+import heroImage from "./assets/shutterstock_2635779973.jpg";
 import logo from "./assets/33c4dd26ee1590073477a9c145d04adc1e90a0ad.png";
 
 export default function ZRTHormoneTest() {
@@ -78,7 +78,15 @@ export default function ZRTHormoneTest() {
               backgroundSize: 'cover',
               backgroundColor: '#236189',
             }}
-          ></div>
+          >
+            <style>{`
+              @media (min-width: 1280px) {
+                .absolute.inset-0.bg-no-repeat {
+                  background-position: center 30% !important;
+                }
+              }
+            `}</style>
+          </div>
 
           {/* Gradient Overlay */}
           <div
