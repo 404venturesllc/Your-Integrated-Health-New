@@ -46,7 +46,7 @@ export default function SalivaTest() {
   return (
     <>
       <Helmet>
-        <title>ZRT Women's Hormone Saliva Test | Your Integrative Health</title>
+        <title>Women's Saliva Hormone Test | Your Integrative Health</title>
         <meta
           name="description"
           content="You're not broken. Your hormones are trying to tell you something. Get answers with our comprehensive at-home hormone test + personalized review with Megan Hormazdi, FNP-BC."
@@ -55,14 +55,14 @@ export default function SalivaTest() {
         <meta name="robots" content="noindex, follow" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="ZRT Women's Hormone Saliva Test | Your Integrative Health" />
+        <meta property="og:title" content="Women's Saliva Hormone Test | Your Integrative Health" />
         <meta property="og:description" content="You're not broken. Your hormones are trying to tell you something. Get answers with our comprehensive at-home hormone test." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.yourintegrativehealth.com/saliva-test" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="ZRT Women's Hormone Saliva Test | Your Integrative Health" />
+        <meta name="twitter:title" content="Women's Saliva Hormone Test | Your Integrative Health" />
         <meta name="twitter:description" content="You're not broken. Your hormones are trying to tell you something. Get answers with our comprehensive at-home hormone test." />
       </Helmet>
 
@@ -222,7 +222,7 @@ export default function SalivaTest() {
               <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
                 <div>
                   <p className="font-['Poppins'] text-[17px] md:text-[18px] text-[#565d6d] leading-relaxed mb-8 text-center lg:text-left">
-                    The ZRT Women's Hormone Panel maps your hormone landscape across a full day. We're not looking for one-size-fits-all "normal." We're looking for <strong>your</strong> pattern, the clues your body is giving us.
+                    The Women's Saliva Hormone Panel maps your hormone landscape across a full day. We're not looking for one-size-fits-all "normal." We're looking for <strong>your</strong> pattern, the clues your body is giving us.
                   </p>
 
                   <h3 className="font-['Poppins'] font-semibold text-[22px] text-[#236189] mb-4">

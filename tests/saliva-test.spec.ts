@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('ZRT Hormone Test Landing Page', () => {
+test.describe('Saliva Hormone Test Landing Page', () => {
   test('should load the page successfully', async ({ page }) => {
     await page.goto('/saliva-test');
 
     // Check page title
-    await expect(page).toHaveTitle(/ZRT Women's Hormone Saliva Test/i);
+    await expect(page).toHaveTitle(/Women's Saliva Hormone Test/i);
 
     // Check main heading is visible
     await expect(page.getByRole('heading', {
