@@ -16,7 +16,7 @@ export default function SalivaTest() {
       return qs ? `${href}${href.includes('?') ? '&' : '?'}${qs.slice(1)}` : href;
     };
 
-    setCheckoutUrl(withQuery("https://yourintegrativehealth.functionalhealingmedicine.com/lab/zrt-hormone-test/checkout"));
+    setCheckoutUrl(withQuery("https://yourintegrativehealth.functionalhealingmedicine.com/lab/saliva-test/checkout"));
   }, []);
 
   const symptoms = [
