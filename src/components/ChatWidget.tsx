@@ -7,6 +7,7 @@ interface Message {
   content: string;
   timestamp: Date;
   showBookingButton?: boolean;
+  showSalivaTestButton?: boolean;
 }
 
 export default function ChatWidget() {
@@ -23,6 +24,9 @@ export default function ChatWidget() {
 
   // Replace with your actual booking URL
   const BOOKING_URL = "https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368";
+
+  // Saliva test landing page URL
+  const SALIVA_TEST_URL = "https://www.yourintegrativehealth.com/saliva-test";
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -84,8 +88,8 @@ export default function ChatWidget() {
       const data = await response.json();
       let responseText = data.response || data.output || data.message || "I'm sorry, I couldn't process that. Please try again.";
 
-      // Replace [CHECKOUT_URL] placeholder with actual URL
-      responseText = responseText.replace(/\[CHECKOUT_URL\]/g, 'https://www.yourintegrativehealth.com/zrt-hormone-test');
+      // Remove any [CHECKOUT_URL] placeholders from the response
+      responseText = responseText.replace(/\[CHECKOUT_URL\]/g, '');
 
       // Check if response mentions booking/scheduling - more specific patterns
       const bookingPhrases = [
@@ -106,12 +110,29 @@ export default function ChatWidget() {
         responseText.toLowerCase().includes(phrase)
       );
 
+      // Check if response mentions hormone test/saliva test
+      const salivaTestPhrases = [
+        'hormone test',
+        'saliva test',
+        'zrt test',
+        'hormone panel',
+        'test your hormones',
+        'hormone testing',
+        'saliva testing',
+        'lab test',
+        'diagnostic test'
+      ];
+      const shouldShowSalivaTestButton = salivaTestPhrases.some(phrase =>
+        responseText.toLowerCase().includes(phrase)
+      );
+
       const botMessage: Message = {
         id: `bot-${Date.now()}`,
         type: 'bot',
         content: responseText,
         timestamp: new Date(),
-        showBookingButton: shouldShowBookingButton
+        showBookingButton: shouldShowBookingButton,
+        showSalivaTestButton: shouldShowSalivaTestButton
       };
 
       setMessages(prev => [...prev, botMessage]);
@@ -310,10 +331,30 @@ export default function ChatWidget() {
                   <div className="ml-10">
                     <a
                       href={BOOKING_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="mt-1 inline-flex items-center gap-2 px-5 py-3 text-white rounded-full font-['Poppins'] font-semibold text-[13px] hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 animate-fadeIn shadow-lg"
                       style={{ background: 'linear-gradient(135deg, #236189 0%, #2a7a9f 100%)' }}
                     >
                       <span className="whitespace-nowrap">📅 Book Your Consultation</span>
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
+                )}
+
+                {/* Saliva Test Button */}
+                {message.showSalivaTestButton && (
+                  <div className="ml-10">
+                    <a
+                      href={SALIVA_TEST_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-flex items-center gap-2 px-5 py-3 text-white rounded-full font-['Poppins'] font-semibold text-[13px] hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 animate-fadeIn shadow-lg"
+                      style={{ background: 'linear-gradient(135deg, #61a94e 0%, #549440 100%)' }}
+                    >
+                      <span className="whitespace-nowrap">🧪 View Saliva Test</span>
                       <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
