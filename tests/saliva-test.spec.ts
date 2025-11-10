@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('ZRT Hormone Test Landing Page', () => {
+test.describe('Saliva Hormone Test Landing Page', () => {
   test('should load the page successfully', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     // Check page title
-    await expect(page).toHaveTitle(/ZRT Women's Hormone Saliva Test/i);
+    await expect(page).toHaveTitle(/Women's Saliva Hormone Test/i);
 
     // Check main heading is visible
     await expect(page.getByRole('heading', {
@@ -14,7 +14,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   });
 
   test('should display all symptoms in the checklist', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     const expectedSymptoms = [
       "Your energy crashes by 2 PM, no matter how much sleep you got",
@@ -32,7 +32,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   });
 
   test('should display comprehensive hormone panel items', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     const panelItems = [
       'Estradiol (E2)',
@@ -48,10 +48,10 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   });
 
   test('should have three CTA buttons with correct text and price', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     const ctaButtons = page.getByRole('link', {
-      name: /Start Your Hormone Investigation — \$249/i
+      name: /Start Your Hormone Investigation — \$380/i
     });
 
     await expect(ctaButtons).toHaveCount(3);
@@ -63,7 +63,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   });
 
   test('should have correct analytics attributes on CTA buttons', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     // Hero CTA
     const heroCTA = page.locator('[data-analytics="cta:hero"]');
@@ -83,7 +83,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
 
   test('should preserve UTM parameters in checkout URLs', async ({ page }) => {
     // Visit page with UTM parameters
-    await page.goto('/zrt-hormone-test?utm_source=google&utm_medium=cpc&utm_campaign=test');
+    await page.goto('/saliva-test?utm_source=google&utm_medium=cpc&utm_campaign=test');
 
     // Wait for the checkout URL to be set
     await page.waitForTimeout(100);
@@ -99,7 +99,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
 
   test('should preserve GCLID parameter in checkout URLs', async ({ page }) => {
     // Visit page with GCLID parameter
-    await page.goto('/zrt-hormone-test?gclid=test123456');
+    await page.goto('/saliva-test?gclid=test123456');
 
     // Wait for the checkout URL to be set
     await page.waitForTimeout(100);
@@ -112,7 +112,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   });
 
   test('should display all key sections', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     // Hero section
     await expect(page.getByRole('heading', {
@@ -144,21 +144,21 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   });
 
   test('should display Megan Hormazdi quote', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     await expect(page.getByText(/I don't just look at numbers/i)).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Megan Hormazdi, FNP-BC' })).toBeVisible();
   });
 
   test('should display the investment applies credit message', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     await expect(page.getByText(/Investment applies toward ongoing care/i)).toBeVisible();
-    await expect(page.getByText(/your full \$249 applies toward your first month/i)).toBeVisible();
+    await expect(page.getByText(/your full \$380 applies toward your first month/i)).toBeVisible();
   });
 
   test('should have proper meta tags', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     // Check meta description from react-helmet
     const metaDescription = page.locator('meta[data-rh="true"][name="description"]');
@@ -172,7 +172,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   test('should be responsive on mobile viewport', async ({ page }) => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     // Check main elements are still visible
     await expect(page.getByRole('heading', {
@@ -180,13 +180,13 @@ test.describe('ZRT Hormone Test Landing Page', () => {
     })).toBeVisible();
 
     const ctaButtons = page.getByRole('link', {
-      name: /Start Your Hormone Investigation — \$249/i
+      name: /Start Your Hormone Investigation — \$380/i
     });
     await expect(ctaButtons.first()).toBeVisible();
   });
 
   test('should display all four "what\'s included" cards', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     await expect(page.getByRole('heading', { name: 'At-Home Saliva Kit' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Comprehensive Hormone Panel' })).toBeVisible();
@@ -195,7 +195,7 @@ test.describe('ZRT Hormone Test Landing Page', () => {
   });
 
   test('CTA buttons should have hover states', async ({ page }) => {
-    await page.goto('/zrt-hormone-test');
+    await page.goto('/saliva-test');
 
     const heroCTA = page.locator('[data-analytics="cta:hero"]');
 

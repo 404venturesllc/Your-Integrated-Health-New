@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import heroImage from "./assets/shutterstock_2635779973.jpg";
 import logo from "./assets/33c4dd26ee1590073477a9c145d04adc1e90a0ad.png";
 
-export default function ZRTHormoneTest() {
+export default function SalivaTest() {
   const [checkoutUrl, setCheckoutUrl] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -16,7 +16,7 @@ export default function ZRTHormoneTest() {
       return qs ? `${href}${href.includes('?') ? '&' : '?'}${qs.slice(1)}` : href;
     };
 
-    setCheckoutUrl(withQuery("https://yourintegrativehealth.functionalhealingmedicine.com/lab/zrt-hormone-test/checkout"));
+    setCheckoutUrl(withQuery("https://yourintegrativehealth.functionalhealingmedicine.com/lab/saliva-test/checkout"));
   }, []);
 
   const symptoms = [
@@ -46,7 +46,7 @@ export default function ZRTHormoneTest() {
   return (
     <>
       <Helmet>
-        <title>ZRT Women's Hormone Saliva Test | Your Integrative Health</title>
+        <title>Women's Saliva Hormone Test | Your Integrative Health</title>
         <meta
           name="description"
           content="You're not broken. Your hormones are trying to tell you something. Get answers with our comprehensive at-home hormone test + personalized review with Megan Hormazdi, FNP-BC."
@@ -55,14 +55,14 @@ export default function ZRTHormoneTest() {
         <meta name="robots" content="noindex, follow" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="ZRT Women's Hormone Saliva Test | Your Integrative Health" />
+        <meta property="og:title" content="Women's Saliva Hormone Test | Your Integrative Health" />
         <meta property="og:description" content="You're not broken. Your hormones are trying to tell you something. Get answers with our comprehensive at-home hormone test." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.yourintegrativehealth.com/zrt-hormone-test" />
+        <meta property="og:url" content="https://www.yourintegrativehealth.com/saliva-test" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="ZRT Women's Hormone Saliva Test | Your Integrative Health" />
+        <meta name="twitter:title" content="Women's Saliva Hormone Test | Your Integrative Health" />
         <meta name="twitter:description" content="You're not broken. Your hormones are trying to tell you something. Get answers with our comprehensive at-home hormone test." />
       </Helmet>
 
@@ -134,7 +134,7 @@ export default function ZRTHormoneTest() {
                 data-analytics="cta:hero"
                 className="inline-block bg-[#61a94e] text-white px-10 py-5 rounded-[10px] font-['Poppins'] font-semibold text-[20px] md:text-[22px] hover:bg-[#549440] transition-all shadow-xl hover:shadow-2xl mb-4"
               >
-                Start Your Hormone Investigation - $249
+                Start Your Hormone Investigation - $380
               </a>
 
               <p className="font-['Poppins'] text-[15px] md:text-[16px] text-white max-w-xl mx-auto opacity-90">
@@ -222,7 +222,7 @@ export default function ZRTHormoneTest() {
               <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
                 <div>
                   <p className="font-['Poppins'] text-[17px] md:text-[18px] text-[#565d6d] leading-relaxed mb-8 text-center lg:text-left">
-                    The ZRT Women's Hormone Panel maps your hormone landscape across a full day. We're not looking for one-size-fits-all "normal." We're looking for <strong>your</strong> pattern, the clues your body is giving us.
+                    The Women's Saliva Hormone Panel maps your hormone landscape across a full day. We're not looking for one-size-fits-all "normal." We're looking for <strong>your</strong> pattern, the clues your body is giving us.
                   </p>
 
                   <h3 className="font-['Poppins'] font-semibold text-[22px] text-[#236189] mb-4">
@@ -336,7 +336,7 @@ export default function ZRTHormoneTest() {
 
               <div className="bg-[#236189]/5 border-l-4 border-[#61a94e] p-6 rounded-lg">
                 <p className="font-['Poppins'] text-[15px] md:text-[16px] text-[#565d6d]">
-                  <strong className="text-[#236189]">Investment applies toward ongoing care:</strong> If you continue with our concierge membership, your full $249 applies toward your first month.
+                  <strong className="text-[#236189]">Investment applies toward ongoing care:</strong> If you continue with our concierge membership, your full $380 applies toward your first month.
                 </p>
               </div>
             </div>
@@ -441,7 +441,7 @@ export default function ZRTHormoneTest() {
                 data-analytics="cta:final"
                 className="inline-block bg-white text-[#61a94e] px-10 py-5 rounded-[10px] font-['Poppins'] font-bold text-[20px] md:text-[22px] hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl mb-4"
               >
-                Start Your Hormone Investigation - $249
+                Start Your Hormone Investigation - $380
               </a>
 
               <p className="font-['Poppins'] text-[15px] md:text-[16px] text-white/90">

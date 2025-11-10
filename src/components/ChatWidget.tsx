@@ -35,6 +35,9 @@ export default function ChatWidget() {
   const SUPPORT_PHONE = import.meta.env.VITE_SUPPORT_PHONE || "714-586-8872";
   const SUPPORT_EMAIL = import.meta.env.VITE_SUPPORT_EMAIL || "team@yourintegrativehealth.com";
 
+  // Saliva test landing page URL
+  const SALIVA_TEST_URL = "https://www.yourintegrativehealth.com/saliva-test";
+
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -130,6 +133,22 @@ export default function ChatWidget() {
         buttonData = data.output.button;
         showButton = data.output.showButton;
       }
+
+      // Check if response mentions hormone test/saliva test
+      const salivaTestPhrases = [
+        'hormone test',
+        'saliva test',
+        'zrt test',
+        'hormone panel',
+        'test your hormones',
+        'hormone testing',
+        'saliva testing',
+        'lab test',
+        'diagnostic test'
+      ];
+      const shouldShowSalivaTestButton = salivaTestPhrases.some(phrase =>
+        responseText.toLowerCase().includes(phrase)
+      );
 
       const botMessage: Message = {
         id: `bot-${Date.now()}`,
@@ -451,7 +470,6 @@ export default function ChatWidget() {
                     </div>
                   </div>
                 )}
-
               </div>
             ))}
 
