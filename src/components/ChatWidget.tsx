@@ -6,8 +6,16 @@ interface Message {
   type: 'user' | 'bot' | 'system';
   content: string;
   timestamp: Date;
-  showBookingButton?: boolean;
+  button?: {
+    title: string;
+    url: string;
+  };
 }
+
+// Helper function to generate 4-digit visitor ID
+const generateVisitorId = () => {
+  return Math.floor(1000 + Math.random() * 9000).toString();
+};
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,14 +23,17 @@ export default function ChatWidget() {
   const [inputMessage, setInputMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [sessionId] = useState(() => `session-${Date.now()}`);
+  const [visitorId] = useState(() => generateVisitorId());
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Replace this with your actual n8n webhook URL
-  const WEBHOOK_URL = "https://n8n.srv865926.hstgr.cloud/webhook/SurfBot";
-
-  // Replace with your actual booking URL
-  const BOOKING_URL = "https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368";
+  // Load configuration from environment variables
+  const WEBHOOK_URL = import.meta.env.VITE_CHATBOT_WEBHOOK_URL || "https://n8n.srv865926.hstgr.cloud/webhook/SurfBot";
+  const ORGANIZATION_ID = import.meta.env.VITE_ORGANIZATION_ID || "your-integrative-health-001";
+  const BOOKING_URL = import.meta.env.VITE_BOOKING_URL || "https://yourintegrativehealth.functionalhealingmedicine.com/LandingPage-5694895587734974-5919-2368";
+  const CHECKOUT_URL = import.meta.env.VITE_CHECKOUT_URL || "https://www.yourintegrativehealth.com/zrt-hormone-test";
+  const SUPPORT_PHONE = import.meta.env.VITE_SUPPORT_PHONE || "714-586-8872";
+  const SUPPORT_EMAIL = import.meta.env.VITE_SUPPORT_EMAIL || "team@yourintegrativehealth.com";
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -73,7 +84,9 @@ export default function ChatWidget() {
         },
         body: JSON.stringify({
           message: trimmedMessage,
-          sessionId: sessionId
+          sessionId: sessionId,
+          visitorId: visitorId,
+          organizationId: ORGANIZATION_ID
         })
       });
 
@@ -81,39 +94,53 @@ export default function ChatWidget() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      let responseText = data.response || data.output || data.message || "I'm sorry, I couldn't process that. Please try again.";
+      const rawData = await response.json();
 
-      // Replace [CHECKOUT_URL] placeholder with actual URL
-      responseText = responseText.replace(/\[CHECKOUT_URL\]/g, 'https://www.yourintegrativehealth.com/zrt-hormone-test');
+      // Handle array response from n8n - extract the nested output object
+      let data;
+      if (Array.isArray(rawData)) {
+        data = rawData[0]?.output;
+      } else {
+        data = rawData;
+      }
 
-      // Check if response mentions booking/scheduling - more specific patterns
-      const bookingPhrases = [
-        'book a',
-        'book an',
-        'schedule a',
-        'schedule an',
-        'set up a',
-        'set up an',
-        'would you like to book',
-        'would you like to schedule',
-        'can help you book',
-        'can help you schedule',
-        'let\'s get you scheduled',
-        'ready to book'
-      ];
-      const shouldShowBookingButton = bookingPhrases.some(phrase =>
-        responseText.toLowerCase().includes(phrase)
-      );
+      // Get the actual text - check if output is string or nested object
+      let responseText;
+      if (typeof data?.output === 'string') {
+        responseText = data.output;
+      } else if (typeof data?.output === 'object' && data?.output?.output) {
+        responseText = data.output.output;
+      } else {
+        responseText = data?.response || data?.message || "I'm sorry, I couldn't process that. Please try again.";
+      }
+
+      // Ensure responseText is a string
+      if (typeof responseText !== 'string') {
+        responseText = String(responseText);
+      }
+
+      // Replace [CHECKOUT_URL] placeholder with actual URL from environment
+      responseText = responseText.replace(/\[CHECKOUT_URL\]/g, CHECKOUT_URL);
+
+      // Get button data - check multiple possible locations and showButton flag
+      let buttonData = data?.button;
+      let showButton = data?.showButton;
+
+      if (!buttonData && typeof data?.output === 'object') {
+        buttonData = data.output.button;
+        showButton = data.output.showButton;
+      }
 
       const botMessage: Message = {
         id: `bot-${Date.now()}`,
         type: 'bot',
         content: responseText,
         timestamp: new Date(),
-        showBookingButton: shouldShowBookingButton
+        button: (showButton && buttonData && buttonData !== null && buttonData.title && buttonData.url) ? {
+          title: buttonData.title,
+          url: buttonData.url
+        } : undefined
       };
-
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
@@ -136,156 +163,273 @@ export default function ChatWidget() {
     }
   };
 
+  const handleQuickPrompt = async (prompt: string) => {
+    if (isTyping) return;
+
+    // Add user message
+    const userMessage: Message = {
+      id: `user-${Date.now()}`,
+      type: 'user',
+      content: prompt,
+      timestamp: new Date()
+    };
+    setMessages(prev => [...prev, userMessage]);
+    setIsTyping(true);
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: prompt,
+          sessionId: sessionId,
+          visitorId: visitorId,
+          organizationId: ORGANIZATION_ID
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const rawData = await response.json();
+
+      // Handle array response from n8n - extract the nested output object
+      let data;
+      if (Array.isArray(rawData)) {
+        data = rawData[0]?.output;
+      } else {
+        data = rawData;
+      }
+
+      // Get the actual text - check if output is string or nested object
+      let responseText;
+      if (typeof data?.output === 'string') {
+        responseText = data.output;
+      } else if (typeof data?.output === 'object' && data?.output?.output) {
+        responseText = data.output.output;
+      } else {
+        responseText = data?.response || data?.message || "I'm sorry, I couldn't process that. Please try again.";
+      }
+
+      // Ensure responseText is a string
+      if (typeof responseText !== 'string') {
+        responseText = String(responseText);
+      }
+
+      // Replace [CHECKOUT_URL] placeholder with actual URL from environment
+      responseText = responseText.replace(/\[CHECKOUT_URL\]/g, CHECKOUT_URL);
+
+      // Get button data - check multiple possible locations and showButton flag
+      let buttonData = data?.button;
+      let showButton = data?.showButton;
+
+      if (!buttonData && typeof data?.output === 'object') {
+        buttonData = data.output.button;
+        showButton = data.output.showButton;
+      }
+
+      const botMessage: Message = {
+        id: `bot-${Date.now()}`,
+        type: 'bot',
+        content: responseText,
+        timestamp: new Date(),
+        button: (showButton && buttonData && buttonData !== null && buttonData.title && buttonData.url) ? {
+          title: buttonData.title,
+          url: buttonData.url
+        } : undefined
+      };
+      setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      const errorMessage: Message = {
+        id: `error-${Date.now()}`,
+        type: 'system',
+        content: "Sorry, I'm having trouble connecting. Please try again or contact us directly.",
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  const quickPrompts = [
+    "What services do you offer?",
+    "Tell me about hormone testing",
+    "How does the program work?",
+    "I'd like to book a consultation"
+  ];
+
   return (
     <>
       {/* Floating Chat Button */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-br from-[#61a94e] to-[#549440] text-white rounded-full p-4 md:p-5 shadow-[0px_8px_24px_0px_rgba(97,169,78,0.4)] hover:shadow-[0px_12px_32px_0px_rgba(97,169,78,0.6)] transition-all duration-300 active:scale-95 md:hover:scale-110 group touch-manipulation animate-floatPulse"
+          className="bg-[#61a94e] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95 hover:scale-105 cursor-pointer"
           aria-label="Open chat"
           style={{
             position: 'fixed',
-            bottom: '16px',
-            right: '16px',
-            zIndex: 999999
+            bottom: '20px',
+            right: '20px',
+            width: '72px',
+            height: '72px',
+            zIndex: 999999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
-          <MessageCircle className="w-7 h-7 md:w-8 md:h-8 group-hover:rotate-12 transition-transform duration-300" />
-
-          {/* Notification Badge */}
-          <span className="absolute -top-1 -right-1 bg-[#d4183d] text-white text-[11px] md:text-[12px] font-['Poppins'] font-semibold rounded-full w-5 h-5 md:w-6 md:h-6 flex items-center justify-center animate-pulse shadow-lg">
-            1
-          </span>
-
-          {/* Glow effect */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#61a94e] to-[#549440] opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-300"></div>
+          <MessageCircle style={{ width: '35px', height: '35px' }} strokeWidth={2} />
         </button>
       )}
 
-      {/* Chat Widget Window */}
+      {/* Chat Widget Window - iMessage Style */}
       {isOpen && (
         <div
-          className="rounded-[20px] shadow-[0px_20px_60px_0px_rgba(0,0,0,0.25)] transition-all duration-500 flex flex-col animate-slideInUp backdrop-blur-xl"
+          className="transition-all duration-500 flex flex-col animate-slideInUp"
           style={{
             position: 'fixed',
             bottom: '16px',
             right: '16px',
-            width: '500px',
+            width: '420px',
             maxWidth: 'calc(100vw - 32px)',
-            height: '700px',
+            height: '680px',
             maxHeight: 'calc(100vh - 32px)',
-            backgroundColor: 'rgba(255, 255, 255, 0.98)',
             opacity: 1,
             zIndex: 999999,
             borderRadius: '20px',
             overflow: 'hidden',
-            border: '1px solid rgba(255, 255, 255, 0.8)'
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1)'
           }}
         >
-          {/* Header */}
+          {/* Header - iMessage Style */}
           <div
-            className="px-5 md:px-8 py-4 md:py-5 flex items-center justify-between rounded-t-[20px] flex-shrink-0 relative overflow-hidden"
+            className="px-5 py-4 flex items-center justify-between flex-shrink-0"
             style={{
-              background: 'linear-gradient(135deg, #236189 0%, #2a7a9f 50%, #61a94e 100%)',
-              minHeight: '80px'
+              background: 'linear-gradient(135deg, #236189 0%, #78A992 100%)',
+              minHeight: '70px',
+              borderTopLeftRadius: '20px',
+              borderTopRightRadius: '20px'
             }}
           >
-            {/* Animated background effect */}
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-            </div>
-
-            <div className="flex items-center gap-3 md:gap-4 flex-1 relative z-10">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-lg animate-bounce" style={{ animationDuration: '3s' }}>
-                <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-[#61a94e]" />
+            <div className="flex items-center gap-3 flex-1">
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                <MessageCircle className="w-7 h-7" style={{ color: '#ffffff' }} />
               </div>
               <div className="flex-1">
-                <div className="flex items-center gap-2">
-                  <h3
-                    className="font-['Poppins'] font-semibold text-[16px] md:text-[17px]"
-                    style={{ color: '#ffffff' }}
-                  >
-                    Your Health Assistant
-                  </h3>
-                  {/* Online status indicator */}
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
-                  </div>
-                </div>
-                <p
-                  className="font-['Poppins'] text-[12px] md:text-[13px]"
-                  style={{ color: 'rgba(255, 255, 255, 0.95)' }}
-                >
-                  Online now • Typically replies instantly
+                <h3 className="font-semibold text-[17px] text-white">
+                  Chat Support
+                </h3>
+                <p className="text-[12px] text-white/90">
+                  Powered by <a href="https://www.summitdesigns.co/" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-white/80 transition-colors cursor-pointer">Summit Designs</a>
                 </p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="rounded-full p-2 transition-all hover:rotate-90 duration-300 flex-shrink-0 ml-2 relative z-20"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                color: '#ffffff',
-                minWidth: '40px',
-                minHeight: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
+              className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
               aria-label="Close chat"
               title="Close chat"
               type="button"
             >
-              <X className="w-6 h-6" style={{ strokeWidth: 3 }} />
+              <X className="w-5 h-5 text-white" strokeWidth={2} />
             </button>
           </div>
 
-          {/* Messages Area */}
+          {/* Messages Area - iMessage Style */}
           <div
-            className="flex-1 overflow-y-auto px-6 md:px-8 py-5 md:py-6 space-y-4 rounded-[20px]"
+            className="flex-1 overflow-y-auto px-4 py-4 space-y-2"
             style={{
-              backgroundColor: '#f8f9fa',
-              scrollbarWidth: 'thin',
-              scrollbarColor: '#cbd5e0 #f8f9fa',
+              backgroundColor: '#ffffff',
+              scrollbarWidth: 'none',
               minHeight: 0,
-              overflowY: 'auto',
-              borderRadius: '0'
+              overflowY: 'auto'
             }}
           >
+            {/* Timestamp header */}
+            <div className="flex justify-center mb-2">
+              <span className="text-[11px] text-[#86868b] font-medium">
+                {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+              </span>
+            </div>
+
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'} animate-messageSlide flex-col ${message.type === 'user' ? 'items-end' : 'items-start'} gap-2`}
+                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'} animate-messageSlide mb-2`}
               >
-                {/* Bot Avatar */}
+                {/* Bot Message - Gray bubble */}
                 {message.type === 'bot' && (
-                  <div className="flex items-end gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-br from-[#236189] to-[#61a94e] rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
-                      <MessageCircle className="w-4 h-4 text-white" />
-                    </div>
+                  <div className="flex flex-col items-start gap-2 max-w-[80%]">
                     <div
-                      className={`max-w-[75%] px-5 py-4 font-['Poppins'] text-[15px] leading-[1.7] bg-white text-[#333333] shadow-[0_4px_16px_rgba(0,0,0,0.1)] rounded-[20px] rounded-bl-[6px] border border-gray-50 hover:shadow-[0_6px_20px_rgba(0,0,0,0.12)] transition-all duration-300`}
+                      className="px-4 py-2.5 text-[15px] leading-[1.5] text-[#000000]"
                       style={{
+                        backgroundColor: '#e5e5ea',
+                        borderTopLeftRadius: '16px',
+                        borderTopRightRadius: '16px',
+                        borderBottomLeftRadius: '4px',
+                        borderBottomRightRadius: '16px',
                         wordWrap: 'break-word',
-                        overflowWrap: 'break-word'
+                        overflowWrap: 'break-word',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                        paddingLeft: '14px',
+                        paddingRight: '14px'
                       }}
                     >
                       {message.content}
                     </div>
+                    {message.button && message.button.title && message.button.url && (
+                      <a
+                        href={message.button.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cursor-pointer"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          padding: '10px 16px',
+                          backgroundColor: '#007AFF',
+                          color: '#ffffff',
+                          borderRadius: '20px',
+                          fontSize: '14px',
+                          fontWeight: '500',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                          textDecoration: 'none',
+                          transition: 'background-color 0.2s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0051D5'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#007AFF'}
+                      >
+                        <span>{message.button.title}</span>
+                        <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 )}
 
-                {/* User Message */}
+                {/* User Message - Blue bubble */}
                 {message.type === 'user' && (
                   <div
-                    className={`max-w-[75%] px-5 py-4 font-['Poppins'] text-[15px] leading-[1.7] rounded-[20px] rounded-br-[6px] shadow-lg hover:shadow-xl transition-all duration-300`}
+                    className="px-4 py-2.5 text-[15px] leading-[1.5] max-w-[80%]"
                     style={{
-                      background: 'linear-gradient(135deg, #61a94e 0%, #549440 100%)',
+                      backgroundColor: '#007AFF',
                       color: '#ffffff',
+                      borderTopLeftRadius: '16px',
+                      borderTopRightRadius: '16px',
+                      borderBottomLeftRadius: '16px',
+                      borderBottomRightRadius: '4px',
                       wordWrap: 'break-word',
-                      overflowWrap: 'break-word'
+                      overflowWrap: 'break-word',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      paddingLeft: '14px',
+                      paddingRight: '14px'
                     }}
                   >
                     {message.content}
@@ -294,48 +438,50 @@ export default function ChatWidget() {
 
                 {/* System Message */}
                 {message.type === 'system' && (
-                  <div
-                    className={`max-w-[75%] px-5 py-3.5 font-['Poppins'] text-[15px] leading-relaxed bg-blue-50 text-blue-800 border border-blue-200 rounded-[16px] text-center`}
-                    style={{
-                      wordWrap: 'break-word',
-                      overflowWrap: 'break-word'
-                    }}
-                  >
-                    {message.content}
+                  <div className="w-full flex justify-center">
+                    <div
+                      className="px-3 py-2 text-[13px] bg-[#f2f2f7] text-[#86868b] rounded-[12px] text-center max-w-[85%]"
+                      style={{
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                      }}
+                    >
+                      {message.content}
+                    </div>
                   </div>
                 )}
 
-                {/* Booking Button */}
-                {message.showBookingButton && (
-                  <div className="ml-10">
-                    <a
-                      href={BOOKING_URL}
-                      className="mt-1 inline-flex items-center gap-2 px-5 py-3 text-white rounded-full font-['Poppins'] font-semibold text-[13px] hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 animate-fadeIn shadow-lg"
-                      style={{ background: 'linear-gradient(135deg, #236189 0%, #2a7a9f 100%)' }}
-                    >
-                      <span className="whitespace-nowrap">📅 Book Your Consultation</span>
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                )}
               </div>
             ))}
 
-            {/* Typing Indicator */}
+            {/* Quick Prompt Buttons - Show only when just the welcome message */}
+            {messages.length === 1 && messages[0].id === 'welcome' && !isTyping && (
+              <div className="flex flex-col gap-2 mt-3 animate-fadeIn">
+                {quickPrompts.map((prompt, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleQuickPrompt(prompt)}
+                    className="w-full px-4 py-3 text-left text-[14px] bg-[#f2f2f7] text-[#000000] rounded-[12px] hover:bg-[#e5e5ea] active:bg-[#d1d1d6] transition-colors"
+                    style={{
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      border: '1px solid #e5e5ea'
+                    }}
+                  >
+                    {prompt}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Typing Indicator - iMessage Style */}
             {isTyping && (
-              <div className="flex justify-start animate-messageSlide">
-                <div className="flex items-end gap-2">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#236189] to-[#61a94e] rounded-full flex items-center justify-center flex-shrink-0 shadow-md animate-pulse">
-                    <MessageCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="px-6 py-4 rounded-[20px] rounded-bl-[6px] shadow-[0_4px_16px_rgba(0,0,0,0.12)] bg-white border border-gray-50">
-                    <div className="flex gap-2 items-center">
-                      <span className="typing-dot" style={{ animationDelay: '0ms' }} />
-                      <span className="typing-dot" style={{ animationDelay: '200ms' }} />
-                      <span className="typing-dot" style={{ animationDelay: '400ms' }} />
-                    </div>
+              <div className="flex justify-start animate-messageSlide mb-1">
+                <div className="px-4 py-3 rounded-[18px] bg-[#e5e5ea]">
+                  <div className="flex gap-1.5 items-center">
+                    <span className="typing-dot-imessage" style={{ animationDelay: '0ms' }} />
+                    <span className="typing-dot-imessage" style={{ animationDelay: '200ms' }} />
+                    <span className="typing-dot-imessage" style={{ animationDelay: '400ms' }} />
                   </div>
                 </div>
               </div>
@@ -343,129 +489,47 @@ export default function ChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Area */}
-          <div className="p-5 md:p-6 border-t border-gray-100 flex-shrink-0" style={{ backgroundColor: '#ffffff', overflow: 'hidden' }}>
-            {/* Quick Action Pills */}
-            {messages.length <= 1 && (
-              <div className="flex flex-wrap gap-2 mb-4 w-full animate-fadeIn">
-                <button
-                  onClick={() => setInputMessage("What services do you offer?")}
-                  className="px-4 py-2.5 bg-gradient-to-r from-[#61a94e]/10 to-[#61a94e]/5 text-[#61a94e] border border-[#61a94e]/30 rounded-full text-[13px] font-['Poppins'] font-medium hover:bg-gradient-to-r hover:from-[#61a94e] hover:to-[#549440] hover:text-white hover:border-[#61a94e] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
-                >
-                  <span className="flex items-center gap-1.5">
-                    💊 <span>Services</span>
-                  </span>
-                </button>
-                <button
-                  onClick={() => setInputMessage("Do you treat PCOS?")}
-                  className="px-4 py-2.5 bg-gradient-to-r from-[#236189]/10 to-[#236189]/5 text-[#236189] border border-[#236189]/30 rounded-full text-[13px] font-['Poppins'] font-medium hover:bg-gradient-to-r hover:from-[#236189] hover:to-[#1a4d6b] hover:!text-white hover:border-[#236189] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
-                >
-                  <span className="flex items-center gap-1.5">
-                    🩺 <span>PCOS</span>
-                  </span>
-                </button>
-                <button
-                  onClick={() => setInputMessage("I have low energy and weight gain")}
-                  className="px-4 py-2.5 bg-gradient-to-r from-[#61a94e]/10 to-[#61a94e]/5 text-[#61a94e] border border-[#61a94e]/30 rounded-full text-[13px] font-['Poppins'] font-medium hover:bg-gradient-to-r hover:from-[#61a94e] hover:to-[#549440] hover:text-white hover:border-[#61a94e] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
-                >
-                  <span className="flex items-center gap-1.5">
-                    ⚡ <span>Energy</span>
-                  </span>
-                </button>
-              </div>
-            )}
-
-            <div className="flex gap-3 items-center bg-gradient-to-r from-gray-50 to-gray-100/50 rounded-[24px] p-2 border-2 border-gray-200 focus-within:border-[#61a94e] focus-within:bg-white focus-within:shadow-lg transition-all duration-300">
+          {/* Input Area - iMessage Style */}
+          <div className="px-3 py-2.5 border-t border-[#e5e5ea] flex-shrink-0" style={{ backgroundColor: '#f8f8f8' }}>
+            <div className="flex gap-2 items-center bg-white rounded-[20px] px-3 py-2 border border-[#e5e5ea]">
               <input
                 ref={inputRef}
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
+                placeholder="Type a message..."
                 disabled={isTyping}
-                className="flex-1 px-4 py-3 bg-transparent focus:outline-none font-['Poppins'] text-[15px] disabled:cursor-not-allowed placeholder:text-gray-400"
-                style={{ fontSize: '16px' }}
+                className="flex-1 bg-transparent focus:outline-none text-[15px] disabled:cursor-not-allowed placeholder:text-[#86868b]"
+                style={{
+                  fontSize: '16px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                  padding: '6px 0'
+                }}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputMessage.trim() || isTyping}
-                className="bg-gradient-to-br from-[#61a94e] to-[#549440] text-white rounded-[16px] hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center flex-shrink-0 shadow-lg"
-                style={{ minWidth: '52px', minHeight: '52px' }}
+                className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                style={{
+                  backgroundColor: inputMessage.trim() && !isTyping ? '#007AFF' : '#e5e5ea',
+                  color: inputMessage.trim() && !isTyping ? '#ffffff' : '#86868b'
+                }}
                 aria-label="Send message"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4" />
               </button>
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="bg-gradient-to-br from-[#f6faf5] to-[#f3f8fc] px-4 md:px-6 py-3 border-t border-gray-100 rounded-b-[20px] flex-shrink-0">
-            <div className="flex items-center justify-between">
-              <p className="font-['Poppins'] text-[11px] md:text-[12px] text-[#565d6d]">
-                AI-powered health assistant
-              </p>
-              <div className="flex items-center gap-3">
-                <a
-                  href="tel:714-586-8872"
-                  className="text-[#61a94e] hover:text-[#549440] transition-colors"
-                  title="Call us"
-                >
-                  <svg
-                    className="w-4 h-4 md:w-5 md:h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="mailto:team@yourintegrativehealth.com"
-                  className="text-[#236189] hover:text-[#1a4d6b] transition-colors"
-                  title="Email us"
-                >
-                  <svg
-                    className="w-4 h-4 md:w-5 md:h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       )}
 
       <style>{`
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
         @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translateY(30px) scale(0.95);
+            transform: translateY(20px) scale(0.95);
           }
           to {
             opacity: 1;
@@ -476,11 +540,11 @@ export default function ChatWidget() {
         @keyframes messageSlide {
           from {
             opacity: 0;
-            transform: translateY(15px) scale(0.97);
+            transform: translateY(8px);
           }
           to {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
           }
         }
 
@@ -498,35 +562,29 @@ export default function ChatWidget() {
         @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(-10px);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
           }
         }
 
-        @keyframes typingDot {
+        @keyframes typingDotImessage {
           0%, 60%, 100% {
             transform: translateY(0);
-            opacity: 0.4;
+            opacity: 0.3;
           }
           30% {
-            transform: translateY(-10px);
-            opacity: 1;
+            transform: translateY(-6px);
+            opacity: 0.8;
           }
-        }
-
-        .animate-slideIn {
-          animation: slideIn 0.3s ease-out;
         }
 
         .animate-slideInUp {
-          animation: slideInUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: slideInUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .animate-messageSlide {
-          animation: messageSlide 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: messageSlide 0.2s ease-out;
         }
 
         .animate-floatPulse {
@@ -534,34 +592,22 @@ export default function ChatWidget() {
         }
 
         .animate-fadeIn {
-          animation: fadeIn 0.6s ease-out;
+          animation: fadeIn 0.3s ease-out;
         }
 
-        .typing-dot {
-          width: 10px;
-          height: 10px;
-          background: linear-gradient(135deg, #61a94e, #236189);
+        .typing-dot-imessage {
+          width: 8px;
+          height: 8px;
+          background: #86868b;
           border-radius: 50%;
-          animation: typingDot 1.4s ease-in-out infinite;
+          animation: typingDotImessage 1.4s ease-in-out infinite;
           display: inline-block;
         }
 
-        /* Custom scrollbar for webkit browsers */
+        /* Hide scrollbar but keep functionality */
         div::-webkit-scrollbar {
-          width: 6px;
-        }
-
-        div::-webkit-scrollbar-track {
-          background: #f8f9fa;
-        }
-
-        div::-webkit-scrollbar-thumb {
-          background: #cbd5e0;
-          border-radius: 3px;
-        }
-
-        div::-webkit-scrollbar-thumb:hover {
-          background: #a0aec0;
+          width: 0px;
+          background: transparent;
         }
       `}</style>
     </>
