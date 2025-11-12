@@ -26,7 +26,7 @@ export default function Navigation() {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="font-['Poppins',sans-serif] text-[16px] lg:text-[18px] xl:text-[20px] text-black hover:text-[#61a94e] transition-colors"
+                className="font-['Poppins',sans-serif] text-[16px] lg:text-[18px] xl:text-[20px] text-black hover:text-[#61a94e] transition-colors cursor-pointer"
               >
                 {link}
               </a>
@@ -35,19 +35,19 @@ export default function Navigation() {
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:block">
-            <button className="bg-[#61a94e] hover:bg-[#508a3f] text-white font-['Poppins',sans-serif] font-medium px-6 xl:px-8 py-2.5 xl:py-3 rounded-[10px] transition-colors text-[16px] xl:text-[20px]">
+            <button className="bg-[#61a94e] hover:bg-[#508a3f] text-white font-['Poppins',sans-serif] font-medium px-6 xl:px-8 py-2.5 xl:py-3 rounded-[10px] transition-colors text-[16px] xl:text-[20px] cursor-pointer">
               Get Started
             </button>
           </div>
 
           {/* Mobile Menu Button & CTA */}
           <div className="flex items-center gap-3 lg:hidden">
-            <button className="bg-[#61a94e] text-white font-['Poppins',sans-serif] font-medium px-4 py-2 rounded-[10px] text-[14px] sm:text-[16px]">
+            <button className="bg-[#61a94e] text-white font-['Poppins',sans-serif] font-medium px-4 py-2 rounded-[10px] text-[14px] sm:text-[16px] cursor-pointer">
               Get Started
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:bg-gray-100"
+              className="p-2 rounded-md text-gray-700 hover:bg-gray-100 cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -64,12 +64,12 @@ export default function Navigation() {
                   key={link}
                   href={`#${link.toLowerCase()}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block font-['Poppins',sans-serif] text-[18px] text-black hover:text-[#61a94e] py-3 border-b border-gray-100"
+                  className="block font-['Poppins',sans-serif] text-[18px] text-black hover:text-[#61a94e] py-3 border-b border-gray-100 cursor-pointer"
                 >
                   {link}
                 </a>
               ))}
-              <button className="w-full bg-[#61a94e] text-white font-['Poppins',sans-serif] font-medium px-6 py-3 rounded-[10px] mt-4 text-[16px]">
+              <button className="w-full bg-[#61a94e] text-white font-['Poppins',sans-serif] font-medium px-6 py-3 rounded-[10px] mt-4 text-[16px] cursor-pointer">
                 Get Started
               </button>
             </div>
