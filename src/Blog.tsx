@@ -48,6 +48,7 @@ import blog38Image from "./assets/blog/WEight gain Blog 38.jpg";
 import blog39Image from "./assets/blog/Arthrotis Blog 39.jpg";
 import blog40Image from "./assets/blog/belly fat Blog 40.jpg";
 import blog41Image from "./assets/blog/Chornic fatugue Blog 41.jpg";
+import blog43Image from "./assets/blog/homrone-therapy--fda-blog-43.jpg";
 
 interface BlogProps {
   navigateTo: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
@@ -102,7 +103,7 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
       date: "April 12, 2023",
       readTime: "6 min read",
       image: blog1Image,
-      featured: true,
+      featured: false,
     },
     {
       id: 2,
@@ -554,6 +555,17 @@ export default function Blog({ navigateTo, onBlogClick }: BlogProps) {
           readTime: "7 min read",
           image: blog41Image,
           featured: false,
+        },
+        {
+          id: 43,
+          title: "Beyond the Black Box: The Hidden Risk in Hormone Replacement Therapy",
+          excerpt: "The FDA removed the black box warning from estrogen products after 20 years — a historic shift. But millions of women seeking hormone therapy may face a hidden risk: most clinicians lack training in proper hormone detoxification and intracellular testing. Learn why safe HRT requires more than just replacement.",
+          category: "Hormone Health",
+          author: "Megan Hormazdi, NP",
+          date: "November 13, 2025",
+          readTime: "5 min read",
+          image: blog43Image,
+          featured: true,
         },
   ];
 

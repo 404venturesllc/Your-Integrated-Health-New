@@ -49,6 +49,7 @@ import blog38Image from "./assets/blog/WEight gain Blog 38.jpg";
 import blog39Image from "./assets/blog/Arthrotis Blog 39.jpg";
 import blog40Image from "./assets/blog/belly fat Blog 40.jpg";
 import blog41Image from "./assets/blog/Chornic fatugue Blog 41.jpg";
+import blog43Image from "./assets/blog/homrone-therapy--fda-blog-43.jpg";
 
 interface BlogDetailProps {
   navigateTo: (page: "home" | "services" | "about" | "faq" | "contact" | "blog") => void;
@@ -68,7 +69,7 @@ const blogPosts = [
     date: "April 12, 2023",
     readTime: "6 min read",
     image: blog1Image,
-    featured: true,
+    featured: false,
     fullContent: `
       <p>Being on a diet can zap your energy while your body adjusts to eating less. You fall behind at work because you're dragging yourself around. You order a bacon cheeseburger instead of a salad as your patience shrinks and frustrations build up.</p>
 
@@ -2372,7 +2373,7 @@ const blogPosts = [
     `
   },
   {
-    id: 43,
+    id: 26,
     title: "Unlocking the Secrets to Optimal Brain Health: The Key Nutrients and Lifestyle Strategies",
     excerpt: "The brain is arguably the most important organ in the body, responsible for controlling all bodily functions. Supporting brain health through targeted nutrition and supplementation may serve as an assistive strategy against cognitive decline.",
     category: "Mental Wellness",
@@ -3348,6 +3349,91 @@ const blogPosts = [
         <p class="font-semibold mb-2">Disclaimer:</p>
         <p class="mb-4">The information, including but not limited to, text, graphics, images, and other material contained on this blog are for informational purposes only. The purpose of this blog is to promote broad consumer understanding and knowledge of various health topics. It is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health care provider with any questions you may have regarding a medical condition or treatment and before undertaking a new health care regimen, and never disregard professional medical advice or delay in seeking it because of something you have read on this blog. No guarantee is provided or implied. Results may vary based on each patient's physical health and adherence to the care plan designed by the provider. These statements have not been evaluated by the United States Food & Drug Administration. These products are not intended to diagnose, treat, prevent, or cure any disease.</p>
         <p class="text-xs">(c) 2021 by Your Integrative Health.PC & Megan Hormazdi, FNP-BC, All Rights Reserved. Statements not evaluated by the FDA, not intended to diagnose, treat, cure or prevent any disease.</p>
+      </div>
+    `
+  },
+  {
+    id: 43,
+    title: "Beyond the Black Box: The Hidden Risk in Hormone Replacement Therapy",
+    excerpt: "The FDA removed the black box warning from estrogen products after 20 years — a historic shift. But millions of women seeking hormone therapy may face a hidden risk: most clinicians lack training in proper hormone detoxification and intracellular testing. Learn why safe HRT requires more than just replacement.",
+    category: "Hormone Health",
+    author: "Megan Hormazdi, NP",
+    date: "November 13, 2025",
+    readTime: "5 min read",
+    image: blog43Image,
+    featured: true,
+    fullContent: `
+      <h2>The Menopause Announcement That Could Transform Women's Health — or Put Them at Risk</h2>
+
+      <p>The FDA recently removed the black box warning from estrogen products — a major shift after 20 years of fear-based messaging following the flawed WHI study.</p>
+
+      <p><strong>This is a historic moment.</strong><br>But it comes with a hidden risk.</p>
+
+      <p>Millions of women will now seek hormone therapy. But most clinicians still lack training in:</p>
+
+      <ul>
+        <li>Hormone detox pathways</li>
+        <li>Intracellular hormone testing</li>
+        <li>Bioidentical hormone safety</li>
+        <li>Estrogen metabolism patterns</li>
+        <li>Methylation, genetics, and detox enzymes</li>
+        <li>Gut–liver hormone recirculation</li>
+      </ul>
+
+      <h2>The Problem With Blood Hormone Testing</h2>
+      
+      <p>Blood testing reflects hormone levels circulating in the bloodstream, not the levels inside your cells. This means levels often appear "low," even when tissues have adequate or excessive hormone activity.</p>
+
+      <p>This leads to:</p>
+
+      <ul>
+        <li>Overtreatment</li>
+        <li>Hormone overload</li>
+        <li>Estrogen dominance</li>
+        <li>Anxiety</li>
+        <li>Insomnia</li>
+        <li>Breast tenderness</li>
+        <li>Weight gain</li>
+        <li>Increased harmful estrogen metabolites</li>
+        <li>Elevated DNA damage risk</li>
+      </ul>
+
+      <h2>Why Detox Matters MORE Than Replacement</h2>
+
+      <p>Hormones must be broken down through two detox pathways in the liver and then cleared through the gut. If detox isn't supported:</p>
+
+      <ul>
+        <li>Estrogen can convert into harmful forms</li>
+        <li>DNA adducts form</li>
+        <li>Inflammation rises</li>
+        <li>Cancer-driving metabolites increase</li>
+        <li>Liver and gut congestion worsen symptoms</li>
+      </ul>
+
+      <h2>The Safe Path Forward</h2>
+
+      <p>Hormone therapy can be transformative — but only when done with:</p>
+
+      <ul>
+        <li>✔ Intracellular hormone evaluation</li>
+        <li>✔ Detox pathway assessment</li>
+        <li>✔ Bioidentical hormone options</li>
+        <li>✔ Proper dosing</li>
+        <li>✔ Ongoing monitoring</li>
+        <li>✔ Gut–liver detox support</li>
+      </ul>
+
+      <p><strong>Women deserve safe, effective, evidence-based hormone therapy — not guesswork.</strong></p>
+
+      <div class="bg-gradient-to-r from-[#61a94e]/10 to-[#236189]/10 border-l-4 border-[#61a94e] p-6 rounded-r-lg my-8">
+        <p class="font-semibold text-gray-900 mb-2">Ready to approach hormone therapy the right way?</p>
+        <p class="text-gray-700">Schedule a comprehensive hormone consultation with us today. We'll assess your intracellular hormone levels, evaluate your detox pathways, and create a personalized, safe hormone optimization plan.</p>
+      </div>
+
+      <div class="text-sm text-gray-600 bg-gray-50 p-6 rounded-lg my-8 leading-relaxed">
+        <p class="font-semibold mb-2">Disclaimer:</p>
+        <p class="mb-4">The information, including but not limited to, text, graphics, images, and other material contained on this blog are for informational purposes only. The purpose of this blog is to promote broad consumer understanding and knowledge of various health topics. It is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health care provider with any questions you may have regarding a medical condition or treatment and before undertaking a new health care regimen, and never disregard professional medical advice or delay in seeking it because of something you have read on this blog.</p>
+        <p class="text-xs">(c) 2025 by Your Integrative Health.PC & Megan Hormazdi, FNP-BC, All Rights Reserved. Statements not evaluated by the FDA, not intended to diagnose, treat, cure or prevent any disease.</p>
       </div>
     `
   },
