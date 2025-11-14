@@ -64,6 +64,17 @@ export default function SalivaTest() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Women's Saliva Hormone Test | Your Integrative Health" />
         <meta name="twitter:description" content="You're not broken. Your hormones are trying to tell you something. Get answers with our comprehensive at-home hormone test." />
+        
+        {/* Google Tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16576321077"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16576321077');
+          `}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-white">
