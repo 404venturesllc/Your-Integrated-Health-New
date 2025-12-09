@@ -36,7 +36,7 @@ export default function ChatWidget() {
   const SUPPORT_EMAIL = import.meta.env.VITE_SUPPORT_EMAIL || "team@yourintegrativehealth.com";
 
   // Saliva test landing page URL
-  const SALIVA_TEST_URL = "https://www.yourintegrativehealth.com/saliva-test";
+  const SALIVA_TEST_URL = "https://www.yourintegrativehealth.com/group-program";
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {

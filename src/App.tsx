@@ -50,7 +50,7 @@ const SalivaTest = lazy(() => import("./SalivaTest"));
 
 export default function App() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(1);
-  const [currentPage, setCurrentPage] = useState<"home" | "services" | "about" | "faq" | "contact" | "blog" | "disclaimer" | "privacy" | "terms" | "saliva-test">("home");
+  const [currentPage, setCurrentPage] = useState<"home" | "services" | "about" | "faq" | "contact" | "blog" | "disclaimer" | "privacy" | "terms" | "group-program">("home");
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -92,8 +92,8 @@ export default function App() {
       setCurrentPage('privacy');
     } else if (path === '/terms') {
       setCurrentPage('terms');
-    } else if (path === '/saliva-test') {
-      setCurrentPage('saliva-test');
+    } else if (path === '/group-program') {
+      setCurrentPage('group-program');
     }
 
     // Handle browser back/forward buttons
@@ -241,7 +241,7 @@ export default function App() {
   }
 
   // If we're on the saliva test page, render that instead
-  if (currentPage === "saliva-test") {
+  if (currentPage === "group-program") {
     return (
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-600">Loading...</div></div>}>
         <SalivaTest />
