@@ -45,7 +45,7 @@ export const homePageTestimonials: Testimonial[] = [
   },
   {
     name: 'Jas',
-    role: 'GLP-1 Success',
+    role: 'Weight Loss Success',
     content: 'Megan sent the LillyDirect script Friday morning; I ordered that afternoon and the vials arrived by Monday. By week 4, I felt more in control around food.',
     rating: 5,
   },

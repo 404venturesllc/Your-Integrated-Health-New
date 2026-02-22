@@ -22,7 +22,7 @@ export default function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center bg-white rounded-full px-4 sm:px-5 py-2 mb-6 shadow-sm">
             <span className="font-['Poppins',sans-serif] text-[#61a94e] text-[14px] sm:text-[16px]">
-              Personalized Telehealth Care
+              Personalized Integrative Care
             </span>
           </div>
 
@@ -33,7 +33,7 @@ export default function HeroSection() {
 
           {/* Subheading */}
           <p className="font-['Poppins',sans-serif] text-[16px] lg:text-[18px] text-gray-700 leading-relaxed mb-6 sm:mb-8">
-            Combine GLP-1 medication with expert guidance on lifestyle, nutrition, and gut health—tailored to your unique needs.
+            Expert guidance on lifestyle, nutrition, and gut health—tailored to your unique needs.
           </p>
 
           {/* Buttons */}

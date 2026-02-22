@@ -41,7 +41,7 @@ export default function ConditionsSection() {
     {
       icon: <Weight size={32} />,
       title: 'Weight Resistance',
-      description: 'Break through plateaus with personalized GLP-1 and metabolic support.',
+      description: 'Break through plateaus with personalized metabolic and hormone support.',
       iconBgColor: 'bg-[rgba(97,169,78,0.1)]',
     },
     {

@@ -12,8 +12,8 @@ export default function FAQSection() {
       answer: 'Simply book a free consultation call. We\'ll discuss your health history, symptoms, and goals to determine if our program is right for you. From there, we\'ll order labs and create your personalized plan.',
     },
     {
-      question: 'Is GLP-1 medication right for me?',
-      answer: 'GLP-1 medications can be highly effective for weight loss and metabolic health when combined with lifestyle changes. During your consultation, we\'ll review your medical history, current health status, and goals to determine if it\'s appropriate for you.',
+      question: 'How do you determine the right treatment for me?',
+      answer: 'During your consultation, we\'ll review your medical history, current health status, and goals. We use comprehensive lab testing to identify root causes and create a personalized plan that\'s right for your body.',
     },
     {
       question: 'Do you accept insurance?',
@@ -25,11 +25,11 @@ export default function FAQSection() {
     },
     {
       question: 'What makes your approach different?',
-      answer: 'We combine GLP-1 medication with comprehensive lifestyle, nutrition, gut health, and hormone balancing support. Rather than just prescribing medication, we address root causes and create sustainable habits for lasting wellness.',
+      answer: 'We combine comprehensive lifestyle, nutrition, gut health, and hormone balancing support into one personalized program. Rather than just treating symptoms, we address root causes and create sustainable habits for lasting wellness.',
     },
     {
       question: 'Do I need to live in a specific state?',
-      answer: 'We offer telehealth services to patients in multiple states. During your consultation, we\'ll confirm that we\'re licensed to practice in your state and can provide care for you.',
+      answer: 'We offer virtual services to patients in multiple states. During your consultation, we\'ll confirm that we\'re licensed to practice in your state and can provide care for you.',
     },
   ];
 

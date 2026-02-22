@@ -65,8 +65,8 @@ export default function HowItWorksSection() {
     },
     {
       number: '3',
-      title: 'GLP-1 + Integrative Therapy',
-      description: 'Medication is prescribed and shipped to you; support includes lifestyle, gut health, and wellness coaching.',
+      title: 'Personalized Treatment Plan',
+      description: 'Your custom plan is built around your labs and goals; support includes lifestyle, gut health, and wellness coaching.',
       icon: imgPill,
       color: 'blue' as const,
     },

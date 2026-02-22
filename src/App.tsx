@@ -602,7 +602,7 @@ export default function App() {
                   />
                 </div>
                 <p className="font-['Poppins'] text-[#61a94e] text-[14px] md:text-[16px]">
-                  Personalized Telehealth Care
+                  Personalized Integrative Care
                 </p>
               </div>
 
@@ -615,10 +615,9 @@ export default function App() {
 
               {/* Subheading */}
               <p className="font-['Poppins'] font-medium text-[16px] md:text-[18px] lg:text-[20px] text-white mb-12 max-w-[594px]">
-                Telehealth consultations, direct-to-patient
-                medication access, and hormone & wellness
-                optimization—all handled from the comfort of
-                home.
+                Personalized consultations, comprehensive lab testing,
+                and hormone & wellness optimization—all tailored
+                to your unique needs.
               </p>
 
               {/* CTA Buttons */}
@@ -1082,9 +1081,9 @@ export default function App() {
                   number: "3",
                   shadow: "shadow-[0px_4px_15.6px_0px_#236189]",
                   icon: imgPill,
-                  title: "GLP-1 + Integrative Therapy",
+                  title: "Personalized Treatment Plan",
                   description:
-                    "Medication is prescribed and shipped to you; support includes lifestyle, gut health, and wellness coaching.",
+                    "Your custom plan is built around your labs and goals; support includes lifestyle, gut health, and wellness coaching.",
                   mt: "xl:mt-10",
                   decorativeColor: "#236189",
                 },
@@ -1321,9 +1320,9 @@ export default function App() {
                     A Complete Program for Lasting Results
                   </h3>
                   <p className="font-['Poppins'] text-[18px] md:text-[20px] text-black max-w-[900px] mx-auto">
-                    Our integrative program combines telehealth
-                    consultations, personalized labs, and proven
-                    GLP-1 therapy. It's designed to help you lose
+                    Our integrative program combines personalized
+                    consultations, comprehensive labs, and proven
+                    hormone optimization. It's designed to help you lose
                     weight safely, balance your hormones, and feel
                     like yourself again.
                   </p>
@@ -1626,9 +1625,9 @@ export default function App() {
 
                   {/* Description */}
                   <p className="font-['Poppins'] text-[24px] text-black leading-[35px] mb-12 max-w-[604px]">
-                    Our integrative program combines telehealth
-                    consultations, personalized labs, and proven
-                    GLP-1 therapy. It's designed to help you
+                    Our integrative program combines personalized
+                    consultations, comprehensive labs, and proven
+                    hormone optimization. It's designed to help you
                     lose weight safely, balance your hormones,
                     and feel like yourself again.
                   </p>

@@ -60,7 +60,7 @@ export const allFAQs: FAQ[] = [
   },
   {
     question: "Will I have to take medication forever?",
-    answer: "No. Our goal is to heal your metabolism from within so you can transition off GLP-1 therapy without rebound weight gain."
+    answer: "No. Our goal is to heal your metabolism from within so you can transition off medication without rebound weight gain."
   },
   {
     question: "How is your program different from other weight loss clinics?",
@@ -68,7 +68,7 @@ export const allFAQs: FAQ[] = [
   },
   {
     question: "Do you offer virtual appointments?",
-    answer: "Yes—telehealth makes it easy to work with us from anywhere."
+    answer: "Yes—virtual care makes it easy to work with us from anywhere."
   }
 ];
 
