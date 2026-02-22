@@ -71,7 +71,7 @@ function Card6() {
           <path d={svgPaths.p1249f480} fill="var(--fill-0, #61A94E)" id="Ellipse 229" />
         </svg>
       </div>
-      <p className="absolute font-['Poppins:SemiBold',_sans-serif] h-[26.344px] leading-[normal] left-[886.24px] not-italic text-[16.767px] text-black text-center top-[307.52px] translate-x-[-50%] w-[251.848px]">{` GLP-1 + Integrative Therapy`}</p>
+      <p className="absolute font-['Poppins:SemiBold',_sans-serif] h-[26.344px] leading-[normal] left-[886.24px] not-italic text-[16.767px] text-black text-center top-[307.52px] translate-x-[-50%] w-[251.848px]">{` Integrative Wellness Therapy`}</p>
       <p className="absolute font-['Poppins:Medium',_sans-serif] h-[131.72px] leading-[normal] left-[885.77px] not-italic text-[16.767px] text-black text-center top-[442.68px] translate-x-[-50%] w-[224.39px]">Medication is prescribed and shipped to you; support includes lifestyle, gut health, and wellness coaching.</p>
       <p className="absolute font-['Poppins:SemiBold',_sans-serif] h-[50.355px] leading-[normal] left-[886.21px] not-italic text-[#61a94e] text-[40.241px] text-center top-[197.09px] translate-x-[-50%] w-[147.532px]">3</p>
     </div>

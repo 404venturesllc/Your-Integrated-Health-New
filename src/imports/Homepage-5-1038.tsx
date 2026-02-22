@@ -40,7 +40,7 @@ function Group8() {
   return (
     <div className="absolute contents left-[60px] top-[207px]">
       <div className="absolute bg-white h-[38px] left-[60px] rounded-[40px] top-[207px] w-[283px]" />
-      <p className="absolute font-['Poppins:Regular',_sans-serif] leading-[normal] left-[96px] not-italic text-[#61a94e] text-[16px] text-nowrap top-[214px] whitespace-pre">Personalized Telehealth Care</p>
+      <p className="absolute font-['Poppins:Regular',_sans-serif] leading-[normal] left-[96px] not-italic text-[#61a94e] text-[16px] text-nowrap top-[214px] whitespace-pre">Personalized Integrative Care</p>
     </div>
   );
 }
@@ -134,7 +134,7 @@ function Card6() {
           <path d={svgPaths.p1249f480} fill="var(--fill-0, #61A94E)" id="Ellipse 229" />
         </svg>
       </div>
-      <p className="absolute font-['Poppins:SemiBold',_sans-serif] h-[26.344px] leading-[normal] left-[871.24px] not-italic text-[16.767px] text-black text-center top-[1168.52px] translate-x-[-50%] w-[251.848px]">{` GLP-1 + Integrative Therapy`}</p>
+      <p className="absolute font-['Poppins:SemiBold',_sans-serif] h-[26.344px] leading-[normal] left-[871.24px] not-italic text-[16.767px] text-black text-center top-[1168.52px] translate-x-[-50%] w-[251.848px]">{` Integrative Wellness Therapy`}</p>
       <p className="absolute font-['Poppins:Medium',_sans-serif] h-[131.72px] leading-[normal] left-[870.77px] not-italic text-[16.767px] text-black text-center top-[1303.68px] translate-x-[-50%] w-[224.39px]">Medication is prescribed and shipped to you; support includes lifestyle, gut health, and wellness coaching.</p>
       <p className="absolute font-['Poppins:SemiBold',_sans-serif] h-[50.355px] leading-[normal] left-[871.21px] not-italic text-[#61a94e] text-[40.241px] text-center top-[1058.09px] translate-x-[-50%] w-[147.532px]">3</p>
     </div>
@@ -1338,8 +1338,8 @@ function Question1() {
           <IconsArrowDropDown48Px2 />
         </div>
       </div>
-      <p className="absolute font-['Poppins:Bold',_sans-serif] leading-[30px] left-[2.86%] not-italic right-[44.6%] text-[20px] text-black top-[calc(50%-222.5px)]">Do you prescribe medications like GLP-1s?</p>
-      <p className="absolute font-['Poppins:Regular',_sans-serif] inset-[-32.05%_2.75%_86.89%_2.91%] leading-[28px] not-italic text-[#606267] text-[16px]">Yes, when appropriate. Our licensed providers may prescribe medications such as GLP-1s (like semaglutide) alongside lifestyle and nutritional support. All prescriptions are medically supervised to ensure your safety.</p>
+      <p className="absolute font-['Poppins:Bold',_sans-serif] leading-[30px] left-[2.86%] not-italic right-[44.6%] text-[20px] text-black top-[calc(50%-222.5px)]">Do you prescribe medications?</p>
+      <p className="absolute font-['Poppins:Regular',_sans-serif] inset-[-32.05%_2.75%_86.89%_2.91%] leading-[28px] not-italic text-[#606267] text-[16px]">Yes, when appropriate. Our licensed providers may prescribe medications alongside lifestyle and nutritional support. All prescriptions are medically supervised to ensure your safety.</p>
     </div>
   );
 }
@@ -2381,7 +2381,7 @@ export default function Homepage() {
       <div className="absolute left-[71px] size-[18px] top-[217px]" data-name="Full Stop">
         <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-contain pointer-events-none size-full" src={imgFullStop} />
       </div>
-      <p className="absolute font-['Poppins:Medium',_sans-serif] h-[89px] leading-[normal] left-[66px] not-italic text-[20px] text-white top-[536px] w-[594px]">{`Telehealth consultations, direct-to-patient medication access, and hormone & wellness optimization—all handled from the comfort of home.`}</p>
+      <p className="absolute font-['Poppins:Medium',_sans-serif] h-[89px] leading-[normal] left-[66px] not-italic text-[20px] text-white top-[536px] w-[594px]">{`Virtual consultations, direct-to-patient medication access, and hormone & wellness optimization—all handled from the comfort of home.`}</p>
       <Group14 />
       <Group7 />
       <div className="absolute left-[86px] size-[43px] top-[779px]">
@@ -2548,7 +2548,7 @@ export default function Homepage() {
       </div>
       <p className="absolute font-['Poppins:Bold',_sans-serif] h-[34px] leading-[28px] left-[1020px] not-italic text-[#236189] text-[24px] text-center top-[2647px] translate-x-[-50%] w-[554px]">METABOLIC HORMONE BALANCE PROGRAM</p>
       <p className="absolute font-['Poppins:Bold',_sans-serif] leading-[59px] left-[770px] not-italic text-[48px] text-black top-[2696px] w-[540px]">A Complete Program for Lasting Results</p>
-      <p className="absolute font-['Poppins:Regular',_sans-serif] leading-[35px] left-[770px] not-italic text-[24px] text-black top-[2874px] w-[604px]">Our integrative program combines telehealth consultations, personalized labs, and proven GLP-1 therapy. It’s designed to help you lose weight safely, balance your hormones, and feel like yourself again.</p>
+      <p className="absolute font-['Poppins:Regular',_sans-serif] leading-[35px] left-[770px] not-italic text-[24px] text-black top-[2874px] w-[604px]">Our integrative program combines personalized consultations, comprehensive labs, and proven wellness strategies. It’s designed to help you lose weight safely, balance your hormones, and feel like yourself again.</p>
       <p className="absolute font-['Poppins:Bold',_sans-serif] h-[36px] leading-[40px] left-[calc(50%-22px)] not-italic text-[#236189] text-[48px] text-center top-[5663px] translate-x-[-50%] w-[794px]">Why Choose Integrative Health?</p>
       <p className="absolute font-['Poppins:Bold',_sans-serif] h-[36px] leading-[40px] left-[calc(50%-51px)] not-italic text-[#236189] text-[48px] text-center top-[6641px] translate-x-[-50%] w-[794px]">Frequently Asked Questions</p>
       <p className="absolute font-['Poppins:Bold',_sans-serif] leading-[40px] left-[calc(50%+9px)] not-italic text-[#236189] text-[48px] text-center text-nowrap top-[4189px] translate-x-[-50%] whitespace-pre">Patient Success Stories</p>

@@ -249,7 +249,7 @@ const responseText = data.response || data.output || data.message ||
 
 ```json
 {
-  "response": "Great question! Our Metabolic Hormone Balance Program is a comprehensive 4-step process:\n\n1. **Free Consultation** - We chat about your symptoms and goals\n2. **Labs & Personalized Plan** - At-home testing and custom wellness plan\n3. **GLP-1 + Integrative Therapy** - Medication plus lifestyle support\n4. **Ongoing Support** - Quarterly follow-ups and 24/7 email access\n\nWould you like to schedule a free discovery call to learn more?"
+  "response": "Great question! Our Metabolic Hormone Balance Program is a comprehensive 4-step process:\n\n1. **Free Consultation** - We chat about your symptoms and goals\n2. **Labs & Personalized Plan** - At-home testing and custom wellness plan\n3. **Integrative Wellness Therapy** - Personalized lifestyle support\n4. **Ongoing Support** - Quarterly follow-ups and 24/7 email access\n\nWould you like to schedule a free discovery call to learn more?"
 }
 ```
 

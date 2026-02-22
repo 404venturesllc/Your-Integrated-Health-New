@@ -21,7 +21,7 @@ The knowledge base is organized into 13 comprehensive sections:
 - Business names and legal entities
 - Provider credentials (Megan Hormazdi, FNP-BC & Dr. Babak Jamasian, MD)
 - Contact details (phone, email, address)
-- Service model (100% virtual/telehealth)
+- Service model (100% virtual)
 - Social media links
 - Success statistics
 
@@ -274,7 +274,7 @@ When using this knowledge base for chatbot responses:
 
 **Query:** "How does the program work?"
 **Response Source:** Section 2 (Services & Programs - 4-Step Process)
-**Key Info:** Free consultation, Labs & plan, GLP-1 + integrative therapy, Ongoing support
+**Key Info:** Free consultation, Labs & plan, Integrative wellness therapy, Ongoing support
 
 **Query:** "Is it covered by insurance?"
 **Response Source:** Section 7 (FAQ #3)

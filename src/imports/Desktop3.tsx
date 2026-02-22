@@ -108,7 +108,7 @@ export default function Desktop3() {
       </div>
       <p className="absolute font-['Poppins:Bold',_sans-serif] h-[34px] leading-[28px] left-[1047px] not-italic text-[#236189] text-[24px] text-center top-[130px] translate-x-[-50%] w-[554px]">METABOLIC HORMONE BALANCE PROGRAM</p>
       <p className="absolute font-['Poppins:Bold',_sans-serif] leading-[59px] left-[797px] not-italic text-[48px] text-black top-[179px] w-[540px]">A Complete Program for Lasting Results</p>
-      <p className="absolute font-['Poppins:Regular',_sans-serif] leading-[35px] left-[797px] not-italic text-[24px] text-black top-[357px] w-[604px]">Our integrative program combines telehealth consultations, personalized labs, and proven GLP-1 therapy. It’s designed to help you lose weight safely, balance your hormones, and feel like yourself again.</p>
+      <p className="absolute font-['Poppins:Regular',_sans-serif] leading-[35px] left-[797px] not-italic text-[24px] text-black top-[357px] w-[604px]">Our integrative program combines personalized consultations, comprehensive labs, and proven wellness strategies. It’s designed to help you lose weight safely, balance your hormones, and feel like yourself again.</p>
     </div>
   );
 }
